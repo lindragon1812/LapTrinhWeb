@@ -1,0 +1,59 @@
+
+#home{
+	width: 100%;
+	height: 30%;
+	border-bottom: 2px dotted #A4A6F6;
+	border-radius: 10px;
+
+}
+#theme{
+	width: 100%;
+	height: 70%;
+	background-image: url('light.jpg');
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+	
+	
+
+	
+}
+.thongke{
+	width: 25%;
+	height: 100%;
+	
+	float: left;
+	border-right: 2px dotted #A4A6F6;
+
+}
+#home_sachtra{
+	
+	height: 100%;
+	float: left;
+	
+}
+#home div img{
+	width: 80px;
+	height: 80px;
+	padding: 30px;
+	float: left;
+	position: relative;
+	top: 30px;
+	left: 15px;
+}
+#home div p{
+	font-weight: bold;
+	font-size: 15px;
+	margin-bottom: 55px;
+	display: block;
+	position: relative;
+	top: 30px;
+	right: -30px;
+}
+#home div h1{
+
+	position: relative;
+	left: 20px;
+	font-size: 30px;
+
+	
+}

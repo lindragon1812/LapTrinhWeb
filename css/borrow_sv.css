@@ -1,0 +1,39 @@
+#mainpage select{
+
+	height: 20px;
+	display: block;
+	margin: 0px auto;
+	border-radius: 20px;
+	overflow: auto;
+}
+#mainpage h1{
+	text-align: center;
+}
+#mainpage input{
+	position: relative;
+	display: block;
+	margin: 0px auto;
+	top: 30px;
+
+}
+#mainpage p{
+	text-align: center;
+
+}
+#mainpage input{
+	border: 2px;
+	background-color: #009FFF;
+	width: 90px;
+	height: 25px;
+	border-radius: 25px;
+}
+#mainpage div{
+
+	padding: 5px;
+	margin: 0px auto;
+	width: 50%;
+	border: 2px solid #33ccff;
+	border-radius: 8px;
+	height: 200px;
+	margin-top: 10px;
+}
