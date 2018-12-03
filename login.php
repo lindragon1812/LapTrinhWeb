@@ -6,6 +6,16 @@ if (isset($_POST['submit'])) {
 	$name = $_POST['username'];
 	$pw = $_POST['password'];
 	$result = mysqli_query($connect,"SELECT * FROM staff WHERE username = '$name'");
+	if(getResult($name,$pw,$result)==0){
+		$val ="Sai tên ID và mật khẩu ";
+	}
+}
+
+
+
+function getResult($name,$pw,$result){
+
+	
 	if($name == ""){
 		$val = "Hãy nhập tên truy cập";
 	}
@@ -16,56 +26,25 @@ if (isset($_POST['submit'])) {
 		$val = "Sai tên truy cập";
 	}
 	else{
-		$row = mysqli_fetch_assoc($result);
+		while ($row = mysqli_fetch_assoc($result)){
+			$sv_phone = $row['phone'];
+			$sv_id=$row['idStaff'];
+			$sv_name=$row['username'];
+			$sv_pw = $row['password'];
 
-		// 	$sv_phone = $row['phone'];
-		// 	$sv_id=$row['idStaff'];
-		// 	$sv_name=$row['username'];
-		// 	$sv_pw = $row['password'];
-		// 	if($sv_name == $name && $sv_pw == $pw){
-		// 		echo "password correct";
-		// 		$_SESSION['phone']=$sv_phone;
-		// 		$_SESSION['userid']=$sv_name;
-		// 		$_SESSION['id']=$sv_id;
+			if($sv_name == $name && $sv_pw == $pw){
+
+				$_SESSION['phone']=$sv_phone;
+				$_SESSION['userid']=$sv_name;
+				$_SESSION['id']=$sv_id;
 
 
-		// 		header("Location:index.php");
-		// 	}elseif($sv_name ==$name && $sv_pw != $pw){
-		// 		$val = "Sai tên ID và mật khẩu ";
-		// 	}
-		if(getResult($row,$name,$pw) == 0){
-			$val ="Sai tên ID và mật khẩu ";
+				header("Location:index.php");
+				return 1;
+			}
 		}
+		return 0;
 	}
-
-}
-
-function getResult($row,$name,$pw){
-
-
-	$sv_phone = $row['phone'];
-	$sv_id=$row['idStaff'];
-	$sv_name=$row['username'];
-	$sv_pw = $row['password'];
-	
-	if($sv_name == $name && $sv_pw == $pw){
-		
-		$_SESSION['phone']=$sv_phone;
-		$_SESSION['userid']=$sv_name;
-		$_SESSION['id']=$sv_id;
-
-
-		header("Location:index.php");
-		return 1;
-	}
-
-
-
-
-
-	return 0;
-
-	
 }
 ?>
 <!DOCTYPE html>
