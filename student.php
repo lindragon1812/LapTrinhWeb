@@ -26,7 +26,7 @@
 <head>
 	<meta charset="utf-8">
 	<title>
-		Student
+		Sinh viên
 
 	</title>
 	<link rel="stylesheet" type="text/css" href="./css/index.css">

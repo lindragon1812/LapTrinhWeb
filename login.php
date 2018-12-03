@@ -52,7 +52,7 @@ function getResult($name,$pw,$result){
 <head>
 	<meta charset="utf-8"/>
 	<link rel="stylesheet" type="text/css" href="./css/login.css">
-	<title> Login</title>
+	<title> Đăng nhập </title>
 </head>
 <body>
 	<div id="all"> 

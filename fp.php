@@ -45,7 +45,7 @@
 	<meta charset="utf-8"/>
 	<link rel="stylesheet" type="text/css" href="./css/fp.css">
 	<link rel="stylesheet" type="text/css" href="./css/login.css">
-	<title> Login</title>
+	<title> Quên mật khẩu </title>
 </head>
 <body>
 	<div id="all"> 

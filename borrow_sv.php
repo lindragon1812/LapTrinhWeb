@@ -12,7 +12,7 @@
 <head>
 	<meta charset="utf-8">
 	<title>
-		Quản Lý Thư viện
+		Mượn sách
 	</title>
 	<link rel="stylesheet" type="text/css" href="css/index.css">
 	<link rel="stylesheet" type="text/css" href="css/borrow_sv.css">

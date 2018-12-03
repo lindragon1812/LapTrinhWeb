@@ -37,7 +37,7 @@
 <head>
 	<meta charset="utf-8">
 	<title>
-		Quản Lý Thư viện
+		Nhân viên
 
 	</title>
 	<link rel="stylesheet" type="text/css" href="./css/index.css">

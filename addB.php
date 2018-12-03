@@ -10,7 +10,7 @@ mysqli_set_charset($connect,'UTF8');
 <head>
 	<meta charset="utf-8">
 	<title>
-		Quản Lý Thư viện
+		Thêm sách
 	</title>
 	<link rel="stylesheet" type="text/css" href="css/index.css">
 	<link rel="stylesheet" type="text/css" href="css/edit.css">

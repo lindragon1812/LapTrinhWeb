@@ -28,7 +28,7 @@ function filterTable($query)
 <head>
 	<meta charset="utf-8">
 	<title>
-		Student
+		Sách
 
 	</title>
 	<link rel="stylesheet" type="text/css" href="./css/index.css">
