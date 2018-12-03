@@ -3,7 +3,7 @@
 	width: 100%;
 
 	height: 100%;
-	
+	left: 100px;
 	top: 80px;
 }
 .fix_form{
@@ -42,4 +42,9 @@
 	width: 70px;
 	height: 30px;
 	border-radius: 25px;
+}
+h1{
+	position: relative;
+	display: block;
+	top: 10px;
 }

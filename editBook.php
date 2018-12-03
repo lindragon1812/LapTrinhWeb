@@ -49,15 +49,7 @@
 			  		<input type="text" name="gia" value="<?php echo $row['cost'] ?>" class="fix_input">
 			  		<label class="fix_label"> Phân loại sách </label>	
 			  		<select class="fix_input" name="phanloai"> 
-			  				<?php 
-			  				$value = $row['idCategory'];
-			  				$result_dp = mysqli_query($connect,"SELECT * FROM category WHERE idCategory='$value' ");
-			  				while ($row1 = mysqli_fetch_assoc($result_dp)):
-			  					
 			  				
-			  			 ?>
-			  			<option selected  value="<?php echo $row1['idCategory'] ?>"> <?php echo $row1['nameCategory'] ?></option>
-			  				<?php endwhile; ?>
 			  				
 			  				
 			  			<?php 

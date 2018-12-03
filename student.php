@@ -5,7 +5,7 @@
 	mysqli_set_charset($connect,'UTF8');
 	if (isset($_POST['search'])) {
  	$value = $_POST['value'];
- 	$query = "SELECT * FROM student WHERE CONCAT(`idStudent`,`avatar`,`fullname`,`gender`,`birthday`,`idDepartment`) LIKE '%$value%'";
+ 	$query = "SELECT idStudent, avatar, fullname, gender, birthday, d.nameDepartment ,d.idDepartment FROM student s JOIN department d ON s.idDepartment = d.idDepartment WHERE CONCAT(idStudent,avatar,fullname,gender,birthday, d.nameDepartment) LIKE '%$value%'";
  	$search_result = filterTable($query);
  }
  else {
@@ -43,7 +43,7 @@
 				  <p id="po"> Thông tin sinh viên </p>
 				  <p id="pi"> Tìm kiếm </p>
 				  <input type="submit" name="search" value="Find">
-				  <input type="text" name="value" placeholder="ValueToSearch" >
+				  <input type="text" name="value" placeholder="Nhập từ khóa tìm kiếm" >
 				  
 
 			</div>
@@ -53,10 +53,11 @@
 			<thead>
 			<tr>
 				<th> Avatar</th>
-				<th> Fullname </th>
-				<th> Gender </th>
-				<th> Birthday </th>
-				<th> Department </th>
+				<th> Tên </th>
+				<th> Mã sinh viên </th>
+				<th> Giới tính </th>
+				<th> Ngày sinh </th>
+				<th> Khoa </th>
 				<th> Action </th>
 
 			</tr>
@@ -71,8 +72,9 @@
 
 			 ?>
 			 <tr>
-			 	<td> <img style="width: 50px; height: 50px" src="<?php echo $row['avatar']; ?>">  </td>
+			 	<td> <img style="width: 65px; height: 50px" src="<?php echo $row['avatar']; ?>">  </td>
 			 	<td>  <?php echo $row['fullname']; ?> </td>
+			 	<td> <?php echo $row['idStudent']; ?></td>
 			 	<td>  <?php 
 			 				if($row['gender'] == "1"){
 			 					echo "Male";
@@ -81,6 +83,7 @@
 			 				}
 
 			 				  ?> </td>
+			 	
 			 	<td>  <?php echo $row['birthday']; ?> </td>
 			 	<td>  <?php 
 			 			$v =  $row['idDepartment']; 

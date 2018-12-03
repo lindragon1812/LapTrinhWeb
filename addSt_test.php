@@ -1,12 +1,12 @@
 <?php 
-	
-	session_start();
-	$name = $_SESSION['userid'];
-	$connect = mysqli_connect("localhost", "root", "", "libdb") or die('khong the ket noi');
-	mysqli_set_charset($connect,'UTF8');
-	
- ?>
- 
+
+session_start();
+$name = $_SESSION['userid'];
+$connect = mysqli_connect("localhost", "root", "", "libdb") or die('khong the ket noi');
+mysqli_set_charset($connect,'UTF8');
+
+?>
+
 
 <!DOCTYPE html>
 <html>
@@ -23,55 +23,56 @@
 		<?php include("header.inc") ?>
 		<div id="mainpage">
 			<div id="fix_info">
-			  	<form method="POST" class="fix_form" id="myForm" >
-			  		
-			  		<label class="fix_label"> Ảnh </label>
-			  		<input type="file" name="anh"  class="fix_input" id="1">
-			  		<label class="fix_label"> Mã Sinh Viên </label>
-			  		<input type="text" name="masv"  class="fix_input" id="2">
-			  		<label class="fix_label"> Họ và tên </label>
-			  		<input type="text" name="hoten" value="" class="fix_input" id="3">
-			  		<label class="fix_label"> Giới tính </label>
-			  		<select name="gt" class="fix_input" id="4">
 
-			  			
-			  			<option value="1">Nam</option>
-			  			<option value="0">Nu
-			  			</option>
-			  			
-			  		</select>
-			  		<label class="fix_label"> Ngày sinh </label>
-			  		<input type="text" name="ngay" value="" class="fix_input" placeholder="Ngày" id="5">
-			  			
-			  		</input>
-			  		<input type="text" name="thang" value="" class="fix_input" placeholder="Tháng" id="6">
-			  			
-			  		</input>
-			  		<input type="text" name="nam" value="" class="fix_input" placeholder="Năm" id="7">
-			  			
-			  		</input>
+				<form method="POST" class="fix_form" id="myForm" >
+					<h1> Thêm sinh viên</h1>
+					<label class="fix_label"> Ảnh </label>
+					<input type="file" name="anh"  class="fix_input" id="1">
+					<label class="fix_label"> Mã Sinh Viên </label>
+					<input type="text" name="masv"  class="fix_input" id="2">
+					<label class="fix_label"> Họ và tên </label>
+					<input type="text" name="hoten" value="" class="fix_input" id="3">
+					<label class="fix_label"> Giới tính </label>
+					<select name="gt" class="fix_input" id="4">
 
-			  		<label class="fix_label"> Ngành </label>
-			  		<select class="fix_input" name="nganh" id="8">
-			  			<?php 
-			  				$result_dp = mysqli_query($connect,"SELECT * FROM department");
-			  				while ($row1 = mysqli_fetch_assoc($result_dp)):
-			  					
-			  				
-			  			 ?>
-			  			<option value="<?php echo $row1['idDepartment'] ?>"> <?php echo $row1['nameDepartment'] ?></option>
-			  				<?php endwhile; ?>	
-			  		</select>
-			  		
-			  		<input type="button" name="edit_submit" id="edit_submit" value="Submit" onclick="cl();" >
-			  		
-			  		</form> 
 
-			  	</div>
+						<option value="1">Nam</option>
+						<option value="0">Nu
+						</option>
 
-		</div>
+					</select>
+					<label class="fix_label"> Ngày sinh </label>
+					<input type="text" name="ngay" value="" class="fix_input" placeholder="Ngày" id="5">
 
-	</div>
+				</input>
+				<input type="text" name="thang" value="" class="fix_input" placeholder="Tháng" id="6">
+
+			</input>
+			<input type="text" name="nam" value="" class="fix_input" placeholder="Năm" id="7">
+
+		</input>
+
+		<label class="fix_label"> Ngành </label>
+		<select class="fix_input" name="nganh" id="8">
+			<?php 
+			$result_dp = mysqli_query($connect,"SELECT * FROM department");
+			while ($row1 = mysqli_fetch_assoc($result_dp)):
+
+
+				?>
+				<option value="<?php echo $row1['idDepartment'] ?>"> <?php echo $row1['nameDepartment'] ?></option>
+			<?php endwhile; ?>	
+		</select>
+
+		<input type="button" name="edit_submit" id="edit_submit" value="Submit" onclick="cl();" >
+
+	</form> 
+
+</div>
+
+</div>
+
+</div>
 
 </body>
 </html>
@@ -124,27 +125,27 @@
 	}
 </script> -->
 <?php 
- 
-	 if (isset($_POST['masv'])) {
-		$idstudent = $_POST['masv'];
-		$avatar = $_POST['anh'];
-		$fullname = $_POST['hoten'];
-		$gender =  $_POST['gt'];
+
+if (isset($_POST['masv'])) {
+	$idstudent = $_POST['masv'];
+	$avatar = $_POST['anh'];
+	$fullname = $_POST['hoten'];
+	$gender =  $_POST['gt'];
 		//$birthdayst = $_POST['ngaysinh'];
-		$nganh = $_POST['nganh'];
-		$ngay = $_POST['ngay']; 
-		$thang = $_POST['thang'];
-		$nam = $_POST['nam'];
-		$birthdayst = $nam."-".$thang."-".$ngay;
-		
-		$birthday = date("Y/m/d",strtotime($birthdayst));
+	$nganh = $_POST['nganh'];
+	$ngay = $_POST['ngay']; 
+	$thang = $_POST['thang'];
+	$nam = $_POST['nam'];
+	$birthdayst = $nam."-".$thang."-".$ngay;
 
-			
-			mysqli_query($connect,"INSERT INTO `student`(`idStudent`, `avatar`, `fullname`, `gender`, `birthday`, `idDepartment`) VALUES ('$idstudent','$avatar','$fullname','$gender','$birthday','$nganh') ON DUPLICATE KEY UPDATE avatar ='$avatar', fullname = '$fullname', gender='$gender',birthday='$birthday', idDepartment = '$nganh'");
-			header("Location: student.php");
-			
-	}
+	$birthday = date("Y/m/d",strtotime($birthdayst));
 
 
+	mysqli_query($connect,"INSERT INTO `student`(`idStudent`, `avatar`, `fullname`, `gender`, `birthday`, `idDepartment`) VALUES ('$idstudent','$avatar','$fullname','$gender','$birthday','$nganh') ON DUPLICATE KEY UPDATE avatar ='$avatar', fullname = '$fullname', gender='$gender',birthday='$birthday', idDepartment = '$nganh'");
+	header("Location: student.php");
 
- ?>
+}
+
+
+
+?>
