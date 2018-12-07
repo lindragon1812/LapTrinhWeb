@@ -44,7 +44,7 @@ function filterTable($query)
 					<button > <a href="./addB.php">+ Thêm sách</a> </button>
 					<p id="po"> Thông tin sách </p>
 					<p id="pi"> Tìm kiếm </p>
-					<input type="submit" name="search" value="Find">
+					<input type="submit" name="search" value="Tìm">
 					<input type="text" name="value" placeholder="Nhập từ khóa tìm kiếm" >
 
 
@@ -63,7 +63,7 @@ function filterTable($query)
 							<th> Lĩnh vực </th>
 							<th> Ngôn ngữ </th>
 							<th> Số lượng </th>
-							<th> Action </th>
+							<th> H.động </th>
 						</tr>
 
 

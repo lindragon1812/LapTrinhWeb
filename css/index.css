@@ -14,14 +14,15 @@ a{
 	
 	height: 90px;
 	width: 100%;
-	z-index: 6;
+	position: relative;
 	border-radius: 5px;
 	border-bottom: 2px solid #A4A6F6;
+	margin-bottom: 1px;
 
 }
 #sidepage{
 	position: relative;
-	width: 200px;
+	width: 15%;
 	/*	left: 1px;*/
 	/*top: 95px;*/
 	height: 800px;
@@ -37,7 +38,7 @@ a{
 	border: solid #A4A6F6 2px;
 	/*top: 95px;*/
 	/*left: 206px;*/
-	width: 1308.2px;
+	width: calc(85% - 8px);
 	height: 800px;
 	float: left;
 	border-radius: 5px;

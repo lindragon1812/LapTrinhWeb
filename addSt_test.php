@@ -33,7 +33,7 @@ mysqli_set_charset($connect,'UTF8');
 
 
 						<option value="1">Nam</option>
-						<option value="0">Nu
+						<option value="0">Nữ
 						</option>
 
 					</select>
@@ -57,7 +57,7 @@ mysqli_set_charset($connect,'UTF8');
 			<?php }; 
 			?>	 
 		</select>
-		<input type="button" name="edit_submit" id="edit_submit" value="Submit" onclick="cl();" >
+		<input type="button" name="edit_submit" id="edit_submit" value="Xác nhận" onclick="cl();" >
 	</form> 
 
 </div>

@@ -27,6 +27,7 @@ mysqli_set_charset($connect,'UTF8');
 		<div id="mainpage">
 			<div id="fix_info">
 				<form method="POST" class="fix_form">
+					<h1> Sửa thông tin sinh viên</h1>
 					<?php 
 					
 					while($row = mysqli_fetch_assoc($result)):
@@ -62,7 +63,7 @@ mysqli_set_charset($connect,'UTF8');
 							<?php endwhile;
 							?>	
 						</select>
-						<input type="submit" name="edit_submit" id="edit_submit">
+						<input type="submit" name="edit_submit" id="edit_submit" value="Sửa">
 					<?php endwhile;
 					?>	
 				</form> 
