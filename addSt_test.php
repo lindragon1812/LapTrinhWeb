@@ -1,13 +1,9 @@
 <?php 
-
 session_start();
 $name = $_SESSION['userid'];
 $connect = mysqli_connect("localhost", "root", "", "libdb") or die('khong the ket noi');
 mysqli_set_charset($connect,'UTF8');
-
 ?>
-
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -51,21 +47,17 @@ mysqli_set_charset($connect,'UTF8');
 			<input type="text" name="nam" value="" class="fix_input" placeholder="Năm" id="7">
 
 		</input>
-
 		<label class="fix_label"> Ngành </label>
 		<select class="fix_input" name="nganh" id="8">
 			<?php 
-			$result_dp = mysqli_query($connect,"SELECT * FROM department");
-			while ($row1 = mysqli_fetch_assoc($result_dp)):
-
-
-				?>
-				<option value="<?php echo $row1['idDepartment'] ?>"> <?php echo $row1['nameDepartment'] ?></option>
-			<?php endwhile; ?>	
+			$result_dp1 = mysqli_query($connect,"SELECT * FROM department");
+			while ($row11 = mysqli_fetch_assoc($result_dp1)){
+			?>
+				<option value="<?php echo $row11['idDepartment'] ?>"> <?php echo $row11['nameDepartment'] ?></option>
+			<?php }; 
+			?>	 
 		</select>
-
 		<input type="button" name="edit_submit" id="edit_submit" value="Submit" onclick="cl();" >
-
 	</form> 
 
 </div>
@@ -113,8 +105,6 @@ mysqli_set_charset($connect,'UTF8');
 			
 		}
 	}
-
-
 </script>
 <!-- <script type="text/javascript">
 	
@@ -125,7 +115,6 @@ mysqli_set_charset($connect,'UTF8');
 	}
 </script> -->
 <?php 
-
 if (isset($_POST['masv'])) {
 	$idstudent = $_POST['masv'];
 	$avatar = $_POST['anh'];
@@ -137,15 +126,8 @@ if (isset($_POST['masv'])) {
 	$thang = $_POST['thang'];
 	$nam = $_POST['nam'];
 	$birthdayst = $nam."-".$thang."-".$ngay;
-
 	$birthday = date("Y/m/d",strtotime($birthdayst));
-
-
 	mysqli_query($connect,"INSERT INTO `student`(`idStudent`, `avatar`, `fullname`, `gender`, `birthday`, `idDepartment`) VALUES ('$idstudent','$avatar','$fullname','$gender','$birthday','$nganh') ON DUPLICATE KEY UPDATE avatar ='$avatar', fullname = '$fullname', gender='$gender',birthday='$birthday', idDepartment = '$nganh'");
-	header("Location: student.php");
-
+	//header("Location: student.php");
 }
-
-
-
 ?>

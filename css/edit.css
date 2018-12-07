@@ -3,26 +3,30 @@
 	width: 100%;
 
 	height: 100%;
-	left: 100px;
-	top: 80px;
+	
+	
 }
 .fix_form{
-	position: absolute;
-	top: 30%;
-	left: 50%;
-	transform: translate(-50%,-50%);
-	
+	position: relative;
+	/*top: 30%;
+	left: 50%;*/
+	/*transform: translate(-50%,-50%);*/
+	margin: 0px auto;
+	width: 40%;
+	height: 90%;
 }
 .fix_label{
 	position: relative;
 	display: block;
-	right: 150px;
+	/*right: 150px;*/
 	margin: 10px 10px;
 	top: 20px;
 }
 .fix_input{
+	margin: 0px auto;
 	position: relative;
-	right: 50px;
+	/*right: 50px;*/
+	left: 50px;
 	padding: 5px;
 	top: 20px;
 	box-sizing: border-box;

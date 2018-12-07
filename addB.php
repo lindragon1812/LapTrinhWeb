@@ -139,7 +139,7 @@ if (isset($_POST['ma'])) {
 	$copies = $_POST['sl'];
 	
 	mysqli_query($connect,"INSERT INTO `book`(`idBook`, `title`, `author`, `publish`, `pages`, `cost`, `idCategory`, `idLanguage`, `copies`) VALUES ('$idbook','$title','$author','$publish','$page','$cost','$idcategory','$idlang','$copies') ON DUPLICATE KEY UPDATE idBook = '$idbook',title='$title', author='$author', publish='$publish', pages='$page', cost='$cost', idCategory='$idcategory', idLanguage ='$idlang', copies ='$copies'  ");
-	header("Location:book.php");
+	//header("Location:book.php");
 
 }
 ?>
