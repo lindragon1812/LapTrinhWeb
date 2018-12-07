@@ -36,7 +36,7 @@ $datetime2 = date_create('2018-06-28');
 
 // printing result in days format 
 $punish = date_diff(date_create($currentDate), date_create('2018-12-10') ); 
-echo $punish->days; 
+// echo $punish->days; 
 
 
  ?>
@@ -52,7 +52,20 @@ echo $punish->days;
  		<input type="text" name="">
  		<input style="top: 500px;" type="button" onclick="cl();" onsubmit="return false;"> gdsgsg  
  		</form> -->
+ 		<button  onclick="openwindow()"> Click</button>
+ 		<button onclick="closewindow()"> Close </button>
  		
  </body>
  </html>
+ <script type="text/javascript">
+ 	var myWindow;
+ 	function openwindow(){
+ 		 myWindow = window.open("/web/nhom61/connect.php","","width=200,height=100");
+ 		
+ 	}
+ 	function closewindow(){
+ 		window.close();
+ 	}
+
+ </script>
  

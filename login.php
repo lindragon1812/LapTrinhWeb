@@ -39,7 +39,7 @@ function getResult($name,$pw,$result){
 				$_SESSION['id']=$sv_id;
 
 
-				header("Location:index.php");
+				header("Location:home.php");
 				return 1;
 			}
 		}

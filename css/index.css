@@ -20,25 +20,26 @@ a{
 
 }
 #sidepage{
-	position: absolute;
+	position: relative;
 	width: 200px;
-	left: 1px;
-	top: 95px;
+	/*	left: 1px;*/
+	/*top: 95px;*/
 	height: 800px;
 	border: 2px solid #A4A6F6;
 	background-color: white;
-	z-index: 1;
+	
 	border-radius: 5px;
+	float: left;
 }
 #mainpage{
-	position: absolute;
+	position: relative;
 	background-color: white;
 	border: solid #A4A6F6 2px;
-	top: 95px;
-	left: 206px;
+	/*top: 95px;*/
+	/*left: 206px;*/
 	width: 1308.2px;
 	height: 800px;
-	z-index: 1;
+	float: left;
 	border-radius: 5px;
 }
 div img{
@@ -99,7 +100,7 @@ div img{
 
 #sp_1 img{
 	position: relative;
-	top: -15px;
+	top: 20px;
 	width: 55px;
 	height: 55px;
 }
