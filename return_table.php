@@ -57,9 +57,9 @@
 
 			 	?>
 			 	<!-- <td> <a href="return_table.php?id=<?php echo $row['idBorrow'] ?>" onclick="return confirm('TRẢ SÁCH \n'+'Hạn trả : '+'<?php echo $row['dueDate'] ?>\n'+'Ngày trả : '+'<?php echo $currentDate ?>\n'+'Trễ hạn : '+'<?php echo $punish->format('%a days'); ?>');" > Trả sách</a></td> -->
+			 	
 
-
-			 	<td> <a target="pop" href="recieve.php?id=<?php echo $row['idBorrow'] ?>" onclick="pop = window.open(this.href,'pop','width=650,height=400')" > Trả sách</a></td>
+			 	<td> <a target="pop" href="recieve.php?id=<?php echo $row['idBorrow'] ?>" onclick="pop = window.open(this.href,'pop','width=300,height=400,left=500')" > Trả sách</a></td>
 
 
 			 </tr>

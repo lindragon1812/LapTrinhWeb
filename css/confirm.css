@@ -1,0 +1,20 @@
+body{
+	font-family: Arial;
+}
+form p{
+	position: relative;
+	margin: 0px auto;
+	text-align: center;
+	border: 0px;
+	line-height: 30px;
+}
+form input{
+	width: 80px;
+	border: 0px;
+	margin: 0px auto;
+}
+form input[type="submit"]{
+	position: relative;
+	display: block;
+	margin-top: 40px;
+}

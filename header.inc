@@ -5,7 +5,7 @@
 				<nav>
 				<ul style="list-style: none">
 					<li>
-						<a href="#"> Xin chào <?php echo $name ?> </a>
+						<a href="#"> Xin chào, <?php echo $name ?> </a>
 						<ul style="list-style: none">
 							<li>
 								<a href="./login.php" style="display: block"> Logout </a>

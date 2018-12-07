@@ -6,7 +6,7 @@ $dueDate = $_POST['dueDate'];
 $returnDate = $_POST['returnDate'];
 $lateDate = $_POST['lateDate'];
 $lost = $_POST['lost'];
-echo $lost;
+
 
 $id_student = $_POST['id_student'];
 $id_book = $_POST['id_book'];
@@ -25,9 +25,11 @@ $name_book = mysqli_fetch_assoc($result);
 		
 
 	</title>
+	<link rel="stylesheet" type="text/css" href="css/confirm.css">
 </head>
 <body>
-	<form method="POST">
+	<form method="POST" id="myForm" action="confirm.php">
+		<p> Đã hoàn trả sách với thông tin sau : </p>
 		<p> Sinh viên <?php echo $id_student ?> - <?php echo $name_student['fullname'] ?> </p> 
 		<p> Sách mượn <?php echo $id_book ?> - <?php echo $name_book['title'] ?> </p>
 		<p> Ngày mượn <?php echo $borrow_date ?></p>
@@ -46,14 +48,18 @@ $name_book = mysqli_fetch_assoc($result);
 		$lateInt = intval($lateDate)*1000+$lost_pun;
 		?>
 		<p> Phạt <?php echo $lateInt ?></p>
-		<input type="submit" name="submit" value="Xác nhận">
+		<input type="submit" name="submit1" value="Xác nhận">
 		
 	</form>
 </body>
 </html>
+<script type="text/javascript">
+	
+
+</script>
 <?php 
-	if(isset($_POST['submit'])){
-		mysqli_query($connect, "UPDATE borrowing SET returnDate = '$returnDate', punish = '$lateInt' where idBorrow='$id'");
-		echo "<script>window.close();</script>";
-	}
-	?>
+if(isset($_POST['submit'])){
+	mysqli_query($connect, "UPDATE borrowing SET returnDate = '$returnDate', punish = '$lateInt' where idBorrow='$id'");
+	//echo "<script>window.close();</script>";
+}
+?>

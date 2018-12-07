@@ -13,6 +13,7 @@ $row = mysqli_fetch_assoc($result);
 		
 
 	</title>
+	<link rel="stylesheet" type="text/css" href="css/confirm.css">
 </head>
 <body>
 	<form action="finish.php" method="POST">
@@ -41,7 +42,7 @@ $row = mysqli_fetch_assoc($result);
 		<input id="hidden_lost" type="radio" name="lost" value="0" checked > Không hư hại <br>
 		<input id="dmg" type="radio" name="lost" value="1"> Hư hại <br>
 		<input id="lost" type="radio" name="lost" value="2"> Mất sách <br>
-		<input type="submit" name="submit" value="submit">
+		<input type="submit" name="submit" value="Xác nhận">
 	</form>
 </body>
 </html>
