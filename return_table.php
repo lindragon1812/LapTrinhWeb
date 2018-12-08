@@ -26,6 +26,7 @@
 			<thead>
 			<tr>
 				<th> Mã mượn</th>
+				<th>Mã sách</th>
 				<th> Tên sách  </th>
 				<th> Ngày mượn </th>
 				<th> Hạn trả </th>
@@ -46,8 +47,13 @@
 			 ?>
 			 <tr>
 			 	<td>  <?php echo $row['idBorrow']; ?> </td>
-			 	
-			 	<td><?php echo $row['idBook'] ?></td>
+			 	<td> <?php echo $row['idBook'] ?></td>
+			 	<?php 
+			 		$idBook = $row['idBook'];
+			 		$result1 = mysqli_query($connect,"SELECT * FROM book WHERE idBook = '$idBook'");
+			 		$title = mysqli_fetch_assoc($result1);
+			 	 ?>
+			 	<td> <?php echo $title['title'] ?></td>
 			 	<td>  <?php echo $row['borrowDate']; ?> </td>
 			 	<td>  <?php echo $row['dueDate'] ?></td>
 			 	
