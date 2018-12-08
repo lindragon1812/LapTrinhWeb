@@ -88,7 +88,7 @@
 			  		</select>
 			  		<label class="fix_label"> Số lượng </label>
 			  		<input type="text" name="sl" value="<?php echo $row['copies'] ?>" class="fix_input" id="9">
-			  		<input type="button" name="edit_submit" id="edit_submit" onclick="cl1();" value="Sửa">
+			  		<input type="button" name="edit_submit" id="edit_submit" onclick="cl1();" value="Cập nhật">
 			  		
 			  		</form> 
 
@@ -114,37 +114,37 @@
 		var idlang = document.getElementById("8").value;
 		var copies = document.getElementById("9").value;
 		if (idbook=="") {
-			window.alert("HAY CHON MA SACH");
+			window.alert("Hãy điền mã sách");
 
 		}
 		
 		else if(title==""){
-			window.alert("HAY CHON TIEU DE");
+			window.alert("Hãy điền mã tiêu đề");
 		}
 		else if(author==""){
-			window.alert("HAY CHON TAC GIA");
+			window.alert("Hãy điền tác giả");
 		}
 		else if(publish==""){
-			window.alert("HAY CHON NHA XB");
+			window.alert("Hãy điền NXB");
 		}
 		else if(page==""){
-			window.alert("HAY CHON SO TRANG");
+			window.alert("Hãy điền số trang");
 		}
 		else if(cost==""){
-			window.alert("HAY CHON GIA TIEN");
+			window.alert("Hãy điền giá bìa");
 		}
 		else if(idcategory==""){
-			window.alert("HAY CHON PHAN LOAI");
+			window.alert("Hãy chọn thể loại");
 		}
 		else if(idlang==""){
-			window.alert("HAY CHON NGON NGU");
+			window.alert("Hãy chọn ngôn ngữ");
 		}
 		else if(copies==""){
-			window.alert("HAY CHON SO LUONG");
+			window.alert("Hãy chọn số lượng");
 		}
 
 		else{
-			window.alert("Thêm sách thành công ");
+			window.alert(" Đã cập nhật sách thành công ");
 			document.getElementById("myForm").submit();
 			
 		}

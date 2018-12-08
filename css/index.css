@@ -22,7 +22,7 @@ a{
 }
 #sidepage{
 	position: relative;
-	width: 15%;
+	width: 16%;
 	/*	left: 1px;*/
 	/*top: 95px;*/
 	height: 800px;
@@ -38,7 +38,7 @@ a{
 	border: solid #A4A6F6 2px;
 	/*top: 95px;*/
 	/*left: 206px;*/
-	width: calc(85% - 8px);
+	width: calc(84% - 8px);
 	height: 800px;
 	float: left;
 	border-radius: 5px;

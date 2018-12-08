@@ -14,7 +14,7 @@
 		}
 
 		elseif(mysqli_num_rows($result) == 0){
-			$val = "Sai tên ID và mật khẩu";
+			$val = "Sai tên truy cập và mật khẩu";
 		}
 		else{
 		while ($row = mysqli_fetch_assoc($result)) {

@@ -71,25 +71,25 @@ $nameDp = mysqli_fetch_assoc($result_depart);
 		var ngay = document.getElementById("5").value;
 		
 		if(avatar == ""){
-			window.alert("HAY CHON AVATAR");
+			window.alert("Hãy chọn ảnh");
 		}
 		else if(id == ""){
-			window.alert("HAY CHON MA SINH VIEN");
+			window.alert("Hãy điền mã sinh viên");
 		}
 		else if(name == ""){
-			window.alert("HAY CHON TEN");
+			window.alert("Hãy điền họ và tên");
 		}
 		else if(gt == ""){
-			window.alert("HAY CHON GIOI TINH");
+			window.alert("Hãy chọn giới tính");
 		}
 		else if(nganh == ""){
-			window.alert("HAY CHON NGANH");
+			window.alert("Hãy chọn ngành");
 		}
-		else if(ngay == ""){
-			window.alert("HAY CHON NGAY SINH");
+		else if(ngay == "" || thang == "" || nam ==""){
+			window.alert("Hãy chọn đầy đủ thông tin ngày sinh");
 		}
 		else{
-			window.alert("Sửa sinh viên thành công");
+			window.alert("Cập nhật sinh viên thành công");
 			document.getElementById("myForm").submit();		
 		}
 	}
