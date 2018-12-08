@@ -23,7 +23,7 @@ $result2 = mysqli_query($connect, "SELECT borrowing.idBorrow, borrowing.idBook, 
 </head>
 <body>
 	<div>
-		<?php include("header.inc") ?>
+		<?php include("topside.inc") ?>
 		<div id="mainpage">
 			<h2>Thống kê về sách </h2>
 			<p> Thống kê về số lượng sách mượn, trả, quá hạn : </p>

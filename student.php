@@ -20,21 +20,19 @@ function filterTable($query)
 	return $filter_Result;
 }
 ?>
-
 <!DOCTYPE html>
 <html>
 <head>
 	<meta charset="utf-8">
 	<title>
 		Sinh viên
-
 	</title>
 	<link rel="stylesheet" type="text/css" href="./css/index.css">
 	<link rel="stylesheet" type="text/css" href="./css/student.css">
 </head>
 <body>
 	<div>
-		<?php include("header.inc") ?>
+		<?php include("topside.inc") ?>
 		<div id="mainpage">
 			<form action="student.php" method="POST"> 
 				<div id="thongtin">
@@ -44,15 +42,12 @@ function filterTable($query)
 					<p id="pi"> Tìm kiếm </p>
 					<input type="submit" name="search" value="Tìm">
 					<input type="text" name="value" placeholder="Nhập từ khóa tìm kiếm" >
-
-
 				</div>
 			</form>
 			<div id="table">
 				<table id="basictable" class="table">
 					<thead>
 						<tr>
-
 							<th> Avatar</th>
 							<th> Mã sinh viên </th>
 							<th> Tên </th>
@@ -60,74 +55,46 @@ function filterTable($query)
 							<th> Ngày sinh </th>
 							<th> Khoa </th>
 							<th> H.động </th>
-
 						</tr>
-
-
 					</thead>
 					<tbody>
 						<?php 
-
 						while($row = mysqli_fetch_assoc($search_result)):
-
-
 							?>
 							<tr>
-
 								<td> <img style="width: 65px; height: 50px" src="<?php echo $row['avatar']; ?>">  </td>
 								<td> <?php echo $row['idStudent']; ?></td>
 								<td>  <?php echo $row['fullname']; ?> </td>
-
 								<td>  <?php 
 								if($row['gender'] == "1"){
-									echo "Male";
+									echo "Nam";
 								}else{ 
-									echo "Female";
+									echo "Nữ";
 								}
-
 								?> </td>
-
 								<td>  <?php echo $row['birthday']; ?> </td>
-								<td>  <?php 
+								<td>  
+								<?php 
 								$v =  $row['idDepartment']; 
 								$qr = mysqli_query($connect,"SELECT nameDepartment FROM department WHERE idDepartment = '$v'");
-
-								while($rs = mysqli_fetch_assoc($qr)){
-									echo $rs['nameDepartment'];
-								}
-
-
+								$rs = mysqli_fetch_assoc($qr);
+								echo $rs['nameDepartment'];
 								?> 
-
-
-
 							</td>
 							<td>
 								<a href="./edit.php?edit=<?php echo $row['idStudent'] ?>" onclick="sua()" > Sửa </a><br>
 								<a href="./student.php?rm=<?php echo $row['idStudent'] ?>" onclick ="return confirm('Ban co muon xoa <?php echo $row['idStudent'] ?> ? ');"> Xóa </a>
-
 							</td>
-
 						</tr>
 					<?php endwhile; ?>
-
 				</tbody>
-
 			</table>
-
 		</div>
-
-
-
 	</div>
-
 </div>
-
 </body>
 </html>
 <script type="text/javascript">
-	
-
 </script>
 <?php 
 if (isset($_GET['rm'])) {
@@ -135,6 +102,4 @@ if (isset($_GET['rm'])) {
 	mysqli_query($connect,"DELETE FROM `student` WHERE idStudent = '$delete_value'");
 	header("Location: student.php");
 }
-
-
 ?>

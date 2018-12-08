@@ -19,7 +19,7 @@
 </head>
 <body>
 	<div>
-		<?php include("header.inc") ?>
+		<?php include("topside.inc") ?>
 		<div id="mainpage">
 			<h1> Trả Sách </h1>
 			<table id="basictable" class="table">

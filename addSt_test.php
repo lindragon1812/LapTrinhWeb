@@ -16,10 +16,9 @@ mysqli_set_charset($connect,'UTF8');
 </head>
 <body>
 	<div>
-		<?php include("header.inc") ?>
+		<?php include("topside.inc") ?>
 		<div id="mainpage">
 			<div id="fix_info">
-
 				<form method="POST" class="fix_form" id="myForm" >
 					<h1> Thêm sinh viên</h1>
 					<label class="fix_label"> Ảnh </label>
@@ -30,22 +29,26 @@ mysqli_set_charset($connect,'UTF8');
 					<input type="text" name="hoten" value="" class="fix_input" id="3">
 					<label class="fix_label"> Giới tính </label>
 					<select name="gt" class="fix_input" id="4">
-
-
 						<option value="1">Nam</option>
 						<option value="0">Nữ
 						</option>
-
 					</select>
-					<label class="fix_label"> Ngày sinh </label>
-					<input type="text" name="ngay" value="" class="fix_input" placeholder="Ngày" id="5">
-
-				</input>
-				<input type="text" name="thang" value="" class="fix_input" placeholder="Tháng" id="6">
-
-			</input>
-			<input type="text" name="nam" value="" class="fix_input" placeholder="Năm" id="7">
-
+					<label class="fix_label"> Ngày sinh </label>		
+				<select class="fix_input" name="ngay" id="5">
+					<option selected disabled> Ngày</option>
+					<?php for ($i=1; $i <=31 ; $i++) { 					
+					 ?>
+					 	<option value="<?php echo $i ?>"><?php echo $i ?></option>
+					 <?php } ?>
+				</select>
+				<select class="fix_input" name="thang" id="6">
+					<option selected disabled> Tháng</option>
+					<?php for ($i=1; $i <=12 ; $i++) { 					
+					 ?>
+					 	<option value="<?php echo $i ?>"><?php echo $i ?></option>
+					 <?php } ?>
+				</select>
+			<input type="text" name="nam" value="" class="fix_input" placeholder="Năm" id="7">				
 		</input>
 		<label class="fix_label"> Ngành </label>
 		<select class="fix_input" name="nganh" id="8">
@@ -54,18 +57,14 @@ mysqli_set_charset($connect,'UTF8');
 			while ($row11 = mysqli_fetch_assoc($result_dp1)){
 			?>
 				<option value="<?php echo $row11['idDepartment'] ?>"> <?php echo $row11['nameDepartment'] ?></option>
-			<?php }; 
+			<?php } 
 			?>	 
 		</select>
 		<input type="button" name="edit_submit" id="edit_submit" value="Xác nhận" onclick="cl();" >
 	</form> 
-
 </div>
-
 </div>
-
 </div>
-
 </body>
 </html>
 <script type="text/javascript">
@@ -80,7 +79,6 @@ mysqli_set_charset($connect,'UTF8');
 		var nam = document.getElementById("7").value;
 		if(avatar == ""){
 			window.alert("HAY CHON AVATAR");
-
 		}
 		else if(id == ""){
 			window.alert("HAY CHON MA SINH VIEN");
@@ -97,12 +95,9 @@ mysqli_set_charset($connect,'UTF8');
 		else if(ngay == "" || thang == "" || nam ==""){
 			window.alert("HAY CHON NGAY SINH");
 		}
-
-
 		else{
 			window.alert("Thêm sinh viên thành công");
-			document.getElementById("myForm").submit();
-			
+			document.getElementById("myForm").submit();		
 		}
 	}
 </script>
@@ -119,8 +114,7 @@ if (isset($_POST['masv'])) {
 	$idstudent = $_POST['masv'];
 	$avatar = $_POST['anh'];
 	$fullname = $_POST['hoten'];
-	$gender =  $_POST['gt'];
-		//$birthdayst = $_POST['ngaysinh'];
+	$gender =  $_POST['gt'];		//$birthdayst = $_POST['ngaysinh'];
 	$nganh = $_POST['nganh'];
 	$ngay = $_POST['ngay']; 
 	$thang = $_POST['thang'];

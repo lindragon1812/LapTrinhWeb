@@ -36,7 +36,7 @@ function filterTable($query)
 </head>
 <body>
 	<div>
-		<?php include("header.inc") ?>
+		<?php include("topside.inc") ?>
 		<div id="mainpage">
 			<form action="book.php" method="POST"> 
 				<div id="thongtin">

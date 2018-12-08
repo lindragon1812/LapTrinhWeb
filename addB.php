@@ -17,7 +17,7 @@ mysqli_set_charset($connect,'UTF8');
 </head>
 <body>
 	<div>
-		<?php include("header.inc") ?>
+		<?php include("topside.inc") ?>
 		<div id="mainpage">
 			<div id="fix_info">
 				

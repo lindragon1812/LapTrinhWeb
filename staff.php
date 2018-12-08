@@ -48,7 +48,7 @@
 </head>
 <body>
 	<div>
-		<?php include("header.inc") ?>
+		<?php include("topside.inc") ?>
 		
 		<div id="mainpage">
 			

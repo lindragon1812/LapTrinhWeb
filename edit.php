@@ -1,16 +1,17 @@
 <?php 
-
 session_start();
 $name = $_SESSION['userid'];
 $connect = mysqli_connect("localhost", "root", "", "libdb") or die('khong the ket noi');
+mysqli_set_charset($connect,'UTF8');
 if(isset($_GET['edit'])){
 	$id = $_GET['edit'];
 }
 $result = mysqli_query($connect,"SELECT * FROM student WHERE idStudent = '$id'");
-mysqli_set_charset($connect,'UTF8');
-
+$row = mysqli_fetch_assoc($result);
+$id_department = $row['idDepartment'];
+$result_depart = mysqli_query($connect,"SELECT nameDepartment FROM department WHERE idDepartment = '$id_department'");
+$nameDp = mysqli_fetch_assoc($result_depart);
 ?>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,38 +24,28 @@ mysqli_set_charset($connect,'UTF8');
 </head>
 <body>
 	<div>
-		<?php include("header.inc") ?> 
+			<?php include("topside.inc") ?>
 		<div id="mainpage">
 			<div id="fix_info">
 				<form method="POST" class="fix_form">
-					<h1> Sửa thông tin sinh viên</h1>
-					<?php 
-					
-					while($row = mysqli_fetch_assoc($result)):
-
-
-						?>	
+						<h1> Sửa thông tin sinh viên </h1>
 						<label class="fix_label"> Ảnh </label>
 						<input type="file" name="anh" value="<?php echo $row['avatar'] ?>" class="fix_input">
 						<label class="fix_label"> Mã Sinh Viên </label>
 						<input type="text" name="masv" value="<?php echo $row['idStudent'] ?>" class="fix_input">
-						<label class="fix_label"> Họ và têb </label>
+						<label class="fix_label"> Họ và tên </label>
 						<input type="text" name="hoten" value="<?php echo $row['fullname'] ?>" class="fix_input">
 						<label class="fix_label"> Giới tính </label>
 						<select name="gt" class="fix_input" >
-
-
 							<option value="1">Nam</option>
-							<option value="0">Nu
+							<option value="0">Nữ
 							</option>
-
 						</select>
 						<label class="fix_label"> Ngày sinh </label>
 						<input type="text" name="ngaysinh" value="<?php echo $row['birthday'] ?>" class="fix_input">
-
 						<label class="fix_label"> Ngành </label>
 						<select class="fix_input" name="nganh">
-							
+							<option value="<?php echo $id_department ?>"><?php echo $nameDp['nameDepartment'] ?></option>
 							<?php 
 							$result_dp = mysqli_query($connect,"SELECT * FROM department");
 							while ($row1 = mysqli_fetch_assoc($result_dp)):						
@@ -63,17 +54,11 @@ mysqli_set_charset($connect,'UTF8');
 							<?php endwhile;
 							?>	
 						</select>
-						<input type="submit" name="edit_submit" id="edit_submit" value="Sửa">
-					<?php endwhile;
-					?>	
+						<input type="submit" name="edit_submit" id="edit_submit">
 				</form> 
-
 			</div>
-
 		</div>
-
 	</div>
-
 </body>
 </html>
 <?php 
@@ -93,7 +78,4 @@ if (isset($_POST['edit_submit'])) {
 	mysqli_query($connect,"INSERT INTO `student`(`idStudent`, `avatar`, `fullname`, `gender`, `birthday`, `idDepartment`) VALUES ('$idstudent','$avatar','$fullname','$gender','$birthday','$nganh') ON DUPLICATE KEY UPDATE avatar ='$avatar', fullname = '$fullname', gender='$gender',birthday='$birthday', idDepartment = '$nganh'");
 	header("Location:student.php");
 }
-
-
-
 ?>

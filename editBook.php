@@ -24,11 +24,10 @@
 </head>
 <body>
 	<div>
-		<?php include("header.inc") ?>
+		<?php include("topside.inc") ?>
 		<div id="mainpage">
 			<div id="fix_info">
 			  	<form method="POST" class="fix_form">
-			  		<h1> Sửa thông tin sách</h1>
 			  		<?php 
 					
 					while($row = mysqli_fetch_assoc($result)):
@@ -89,7 +88,7 @@
 			  		</select>
 			  		<label class="fix_label"> Số lượng </label>
 			  		<input type="text" name="sl" value="<?php echo $row['copies'] ?>" class="fix_input">
-			  		<input type="submit" name="edit_submit" id="edit_submit" value="Sửa">
+			  		<input type="submit" name="edit_submit" id="edit_submit">
 			  		<?php endwhile; ?>	
 			  		</form> 
 
