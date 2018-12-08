@@ -3,9 +3,9 @@ session_start();
 $name = $_SESSION['userid'];
 $connect = mysqli_connect("localhost", "root", "", "libdb") or die('khong the ket noi');
 mysqli_set_charset($connect,'UTF8');
-$result = mysqli_query($connect, "SELECT borrowing.idBorrow, borrowing.idBook, idStudent, borrowDate FROM borrowing");
-$result1 = mysqli_query($connect, "SELECT borrowing.idBorrow, borrowing.idBook, idStudent, borrowDate, returnDate FROM borrowing WHERE `returnDate` IS NOT NULL");
-$result2 = mysqli_query($connect, "SELECT borrowing.idBorrow, borrowing.idBook, idStudent, borrowDate, returnDate, dueDate FROM borrowing WHERE `returnDate` IS NOT NULL");
+$result = mysqli_query($connect, "SELECT b.idBorrow, b.idBook,bo.title, s.idStudent,s.fullname,b.borrowDate, b.dueDate, b.returnDate FROM borrowing AS b ,student AS s, book as bo WHERE b.idStudent = s.idStudent AND b.idBook = bo.idBook ORDER BY `b`.`idBorrow` ASC");
+$result1 = mysqli_query($connect, "SELECT b.idBorrow, b.idBook,bo.title, s.idStudent,s.fullname,b.borrowDate, b.dueDate, b.returnDate, b.punish FROM borrowing AS b ,student AS s, book as bo WHERE b.idStudent = s.idStudent AND b.idBook = bo.idBook AND b.returnDate IS NOT NULL ORDER BY `b`.`idBorrow` ASC");
+$result2 = mysqli_query($connect, "SELECT b.idBorrow, b.idBook,bo.title, s.idStudent,s.fullname,b.borrowDate, b.dueDate, b.returnDate, b.punish FROM borrowing AS b ,student AS s, book as bo WHERE b.idStudent = s.idStudent AND b.idBook = bo.idBook AND b.returnDate IS NOT NULL ORDER BY `b`.`idBorrow` ASC");
 ?>
 
 <!DOCTYPE html>
@@ -39,9 +39,14 @@ $result2 = mysqli_query($connect, "SELECT borrowing.idBorrow, borrowing.idBook, 
 					<thead>
 						<tr>
 							<th> Mã mượn</th>
-							<th> ID sách  </th>
-							<th> ID student </th>
+							<th> Mã sách  </th>
+							<th> Tên sách </th>
+							<th> Mã sinh viên </th>
+							<th> Tên sinh viên </th>
 							<th> Ngày mượn </th>
+							<th> Hạn trả </th>
+							<th> Ngày trả </th>
+							
 							
 							
 							
@@ -60,10 +65,16 @@ $result2 = mysqli_query($connect, "SELECT borrowing.idBorrow, borrowing.idBook, 
 							?>
 							<tr>
 								<td>  <?php echo $row['idBorrow']; ?> </td>
-								
 								<td><?php echo $row['idBook'] ?></td>
+								<td> <?php echo $row['title'] ?></td>
 								<td>  <?php echo $row['idStudent']; ?> </td>
+								<td> <?php echo $row['fullname'] ?></td>
+
 								<td>  <?php echo $row['borrowDate'] ?></td>
+								<td>
+									<?php echo $row['dueDate'] ?>
+								</td>
+								<td> <?php echo $row['returnDate'] ?></td>
 								
 
 							</tr>
@@ -78,12 +89,16 @@ $result2 = mysqli_query($connect, "SELECT borrowing.idBorrow, borrowing.idBook, 
 				<table id="basictable2" class="table">
 					<thead>
 						<tr>
-							<th> Mã mượn</th>
-							<th> ID sách  </th>
-							<th> ID student </th>
-							<th> Ngày mượn </th>
-							<th> Ngày trả </th>
+							<th>Mã mượn</th>
+							<th>Mã sách  </th>
+							<th>Tên sách </th>
+							<th>Mã sinh viên</th>
+							<th>Tên sinh viên</th>
+							<th>Ngày mượn </th>
+							<th>Hạn trả</th>
+							<th>Ngày trả </th>
 							
+							<th>Phạt</th>
 							
 							
 
@@ -100,12 +115,17 @@ $result2 = mysqli_query($connect, "SELECT borrowing.idBorrow, borrowing.idBook, 
 							?>
 							<tr>
 								<td>  <?php echo $row1['idBorrow']; ?> </td>
-								
 								<td><?php echo $row1['idBook'] ?></td>
+								<td> <?php echo $row1['title'] ?></td>
 								<td>  <?php echo $row1['idStudent']; ?> </td>
-								<td>  <?php echo $row1['borrowDate'] ?></td>
-								<td> <?php  echo $row1['returnDate'] ?></td>
+								<td> <?php echo $row1['fullname'] ?></td>
 
+								<td>  <?php echo $row1['borrowDate'] ?></td>
+								<td>
+									<?php echo $row1['dueDate'] ?>
+								</td>
+								<td> <?php echo $row1['returnDate'] ?></td>
+								<td> <?php echo $row1['punish'] ?></td>
 							</tr>
 						<?php endwhile; ?>
 
@@ -118,13 +138,14 @@ $result2 = mysqli_query($connect, "SELECT borrowing.idBorrow, borrowing.idBook, 
 				<table id="basictable3" class="table">
 					<thead>
 						<tr>
-							<th> Mã mượn</th>
-							<th> ID sách  </th>
-							<th> ID student </th>
-							<th> Ngày mượn </th>
-							<th> Ngày trả </th>
-							<th> Hạn trả </th>
-							<th> Số ngày trễ</th>
+							<th>Mã mượn</th>
+							<th>Mã sách</th>
+							<th>Mã sinh viên </th>
+							<th>Tên sinh viên</th>
+							<th>Ngày mượn</th>
+							<th>Hạn trả</th>
+							<th>Ngày trả</th>						
+							<th>Trễ hạn</th>
 							
 							
 							
@@ -137,8 +158,9 @@ $result2 = mysqli_query($connect, "SELECT borrowing.idBorrow, borrowing.idBook, 
 						<?php 
 						
 						while($row2 = mysqli_fetch_assoc($result2)):
-							$vl = date_diff(date_create($row2['returnDate']),date_create($row2['dueDate']));
-							$vl1 = $vl->days;
+							$vl = date_diff(date_create($row2['dueDate']),  date_create($row2['returnDate']));
+							$vl1 = $vl->format('%R%a');
+							$vl1 = intval($vl1);
 							if($vl1 > 0){
 
 								?>
@@ -147,6 +169,7 @@ $result2 = mysqli_query($connect, "SELECT borrowing.idBorrow, borrowing.idBook, 
 									
 									<td><?php echo $row2['idBook'] ?></td>
 									<td>  <?php echo $row2['idStudent']; ?> </td>
+									<td> <?php echo $row2['fullname'] ?></td>
 									<td>  <?php echo $row2['borrowDate'] ?></td>
 									<td> <?php  echo $row2['returnDate'] ?></td>
 									<td> <?php  echo $row2['dueDate'] ?></td>

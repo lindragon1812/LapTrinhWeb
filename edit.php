@@ -54,7 +54,7 @@ $nameDp = mysqli_fetch_assoc($result_depart);
 							<?php endwhile;
 							?>	
 						</select>
-						<input type="button" name="edit_submit" id="edit_submit" onclick="cl();" value="Sửa">
+						<input type="button" name="edit_submit" id="edit_submit" onclick="cl();" value="Cập nhật">
 				</form> 
 			</div>
 		</div>

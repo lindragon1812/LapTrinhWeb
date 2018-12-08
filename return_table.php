@@ -25,7 +25,7 @@
 			<table id="basictable" class="table">
 			<thead>
 			<tr>
-				<th> Mã sách</th>
+				<th> Mã mượn</th>
 				<th> Tên sách  </th>
 				<th> Ngày mượn </th>
 				<th> Hạn trả </th>

@@ -35,8 +35,8 @@ $datetime2 = date_create('2018-06-28');
 
 
 // printing result in days format 
-$punish = date_diff(date_create($currentDate), date_create('2018-12-10') ); 
-// echo $punish->days; 
+$punish = date_diff(date_create($currentDate), date_create('2018-12-7') ); 
+ echo $punish->format('%R%a');
 
 
  ?>

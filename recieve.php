@@ -24,15 +24,19 @@ $row = mysqli_fetch_assoc($result);
 
 		<p> Hạn trả : <input type="text" name="dueDate" value="<?php echo $row['dueDate'] ?>"> </p>	
 		<?php $currentDate  = date("Y-m-d"); 
-		$punish = date_diff(date_create($currentDate), date_create($row['dueDate']) ); 
-
+		$punish = date_diff(date_create($row['dueDate']), date_create($currentDate)  ); 
+		$punish = $punish->format('%R%a');
+		
+		if(intval($punish) > 0){
+			$punish_int = intval($punish);
+		}else{ $punish_int =0; }
 		?>
 
 		<p> Ngày trả :<input type="text" name="returnDate" value="<?php echo $currentDate ?>"> </p> 
 		
 
 
-		<p> Trễ hạn : <input type="text" name="lateDate" value="<?php echo $punish->format('%a') ?>"></p>
+		<p> Trễ hạn : <input type="text" name="lateDate" value="<?php echo $punish_int ?>"></p>
 		
 		<p> Tình trạng hư hại sách sau khi mượn </p>
 		
