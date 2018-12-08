@@ -8,6 +8,11 @@ if(isset($_GET['edit'])){
 }
 $result = mysqli_query($connect,"SELECT * FROM student WHERE idStudent = '$id'");
 $row = mysqli_fetch_assoc($result);
+$birthday =  $row['birthday'];
+$birthday = strtotime($birthday);
+$day = date("d",$birthday);
+ $month  = date("m",$birthday);
+ $year  = date("Y",$birthday);
 $id_department = $row['idDepartment'];
 $result_depart = mysqli_query($connect,"SELECT nameDepartment FROM department WHERE idDepartment = '$id_department'");
 $nameDp = mysqli_fetch_assoc($result_depart);
@@ -42,9 +47,24 @@ $nameDp = mysqli_fetch_assoc($result_depart);
 							</option>
 						</select>
 						<label class="fix_label"> Ngày sinh </label>
-						<input type="text" name="ngaysinh" value="<?php echo $row['birthday'] ?>" class="fix_input" id="5">
+						<select class="fix_input" name="ngay" id="5">
+					<option selected  value="<?php echo $day ?>"> <?php echo $day ?></option>
+					<?php for ($i=1; $i <=31 ; $i++) { 					
+					 ?>
+					 	<option value="<?php echo $i ?>"><?php echo $i ?></option>
+					 <?php } ?>
+				</select>
+				<select class="fix_input" name="thang" id="6">
+					<option selected  value="<?php echo $month ?>"> <?php echo $month ?></option>
+					<?php for ($i=1; $i <=12 ; $i++) { 					
+					 ?>
+					 	<option value="<?php echo $i ?>"><?php echo $i ?></option>
+					 <?php } ?>
+				</select>
+			<input type="text" name="nam" value="<?php echo $year ?>" class="fix_input" placeholder="Năm" id="7">				
+		</input>
 						<label class="fix_label"> Ngành </label>
-						<select class="fix_input" name="nganh" id="6">
+						<select class="fix_input" name="nganh" id="8">
 							<option value="<?php echo $id_department ?>"><?php echo $nameDp['nameDepartment'] ?></option>
 							<?php 
 							$result_dp = mysqli_query($connect,"SELECT * FROM department");
@@ -55,6 +75,7 @@ $nameDp = mysqli_fetch_assoc($result_depart);
 							?>	
 						</select>
 						<input type="button" name="edit_submit" id="edit_submit" onclick="cl();" value="Cập nhật">
+						<input onclick="location.href='./student.php'" type="button" id="cancelBtn" value="Hủy">   </input>
 				</form> 
 			</div>
 		</div>
@@ -67,8 +88,10 @@ $nameDp = mysqli_fetch_assoc($result_depart);
 		var id = document.getElementById("2").value;
 		var name = document.getElementById("3").value;
 		var gt = document.getElementById("4").value;
-		var nganh = document.getElementById("6").value;
+		var nganh = document.getElementById("8").value;
 		var ngay = document.getElementById("5").value;
+		var thang = document.getElementById("6").value;
+		var nam = document.getElementById("7").value;
 		
 		if(avatar == ""){
 			window.alert("Hãy chọn ảnh");
@@ -100,14 +123,19 @@ if (isset($_POST['masv'])) {
 	$avatar = $_POST['anh'];
 	$fullname = $_POST['hoten'];
 	$gender =  $_POST['gt'];
-	$birthday = $_POST['ngaysinh'];
+	
 	$nganh = $_POST['nganh'];
+	$ngay = $_POST['ngay']; 
+	$thang = $_POST['thang'];
+	$nam = $_POST['nam'];
 		// $_SESSION['masv'] = $idstudent;
 		// $_SESSION['anh']=$avatar;
 		// $_SESSION['hoten']=$fullname;
 		// $_SESSION['gt']=$gender;
 		// $_SESSION['ngaysinh']=$birthday;
 		// $_SESSION['nganh']=$nganh;
+	$birthdayst = $nam."-".$thang."-".$ngay;
+	$birthday = date("Y/m/d",strtotime($birthdayst));
 	mysqli_query($connect,"INSERT INTO `student`(`idStudent`, `avatar`, `fullname`, `gender`, `birthday`, `idDepartment`) VALUES ('$idstudent','$avatar','$fullname','$gender','$birthday','$nganh') ON DUPLICATE KEY UPDATE avatar ='$avatar', fullname = '$fullname', gender='$gender',birthday='$birthday', idDepartment = '$nganh'");
 	//header("Location:student.php");
 }

@@ -64,7 +64,7 @@ mysqli_set_charset($connect,'UTF8');
 					<label class="fix_label"> Số lượng </label>
 					<input type="text" name="sl"  class="fix_input" id="9">
 					<input type="button" name="edit_submit" id="edit_submit" value="Xác nhận" onclick="cl1();">
-					
+					<input onclick="location.href='./student.php'" type="button" id="cancelBtn" value="Hủy">   </input>
 				</form> 
 
 			</div>

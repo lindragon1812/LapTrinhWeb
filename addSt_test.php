@@ -60,7 +60,9 @@ mysqli_set_charset($connect,'UTF8');
 			<?php } 
 			?>	 
 		</select>
-		<input type="button" name="edit_submit" id="edit_submit" value="Xác nhận" onclick="cl();" >
+		<input type="button" name="edit_submit" id="edit_submit" value="Xác nhận" onclick="cl();">   </input> 
+		<input onclick="location.href='./student.php'" type="button" id="cancelBtn" value="Hủy">   </input>
+
 	</form> 
 </div>
 </div>

@@ -89,7 +89,7 @@
 			  		<label class="fix_label"> Số lượng </label>
 			  		<input type="text" name="sl" value="<?php echo $row['copies'] ?>" class="fix_input" id="9">
 			  		<input type="button" name="edit_submit" id="edit_submit" onclick="cl1();" value="Cập nhật">
-			  		
+			  		<input onclick="location.href='./student.php'" type="button" id="cancelBtn" value="Hủy">   </input>
 			  		</form> 
 
 			  	</div>

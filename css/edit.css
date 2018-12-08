@@ -51,4 +51,14 @@ h1{
 	position: relative;
 	display: block;
 	top: 10px;
+	
+}
+#cancelBtn{
+	position: relative;
+	top: 100px;
+	border: 2px;
+	background-color: #009FFF;
+	width: 70px;
+	height: 30px;
+	border-radius: 25px;
 }

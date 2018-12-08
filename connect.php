@@ -1,4 +1,14 @@
 <?php 
+$connect = mysqli_connect("localhost", "root", "", "libdb") or die('khong the ket noi');
+mysqli_set_charset($connect,'UTF8');
+$result = mysqli_query($connect,"SELECT * FROM student WHERE idStudent = '15000151'");
+$row = mysqli_fetch_assoc($result);
+$birthday =  $row['birthday'];
+$birthday = strtotime($birthday);
+$day = date("d",$birthday);
+ $month = $day = date("m",$birthday);
+ $year = $day = date("Y",$birthday);
+echo gettype($month);
 	 // session_start();
 	 // echo $_SESSION['phone'];
 	 // echo $_SESSION['userid'];
@@ -25,18 +35,19 @@
 
  // echo '</script>';
 // echo $_SESSION['test'];
-$currentDate= date("Y-m-d");
+
 //$stop_date = date("Y-m-d", strtotime( "$stop_date + 7 day" ));
 //echo $stop_date;
-$datetime1 = date_create('2017-06-28'); 
-$datetime2 = date_create('2018-06-28'); 
+// $currentDate= date("Y-m-d");
+// $datetime1 = date_create('2017-06-28'); 
+// $datetime2 = date_create('2018-06-28'); 
 
 // calculates the difference between DateTime objects 
 
 
 // printing result in days format 
-$punish = date_diff(date_create($currentDate), date_create('2018-12-7') ); 
- echo $punish->format('%R%a');
+// $punish = date_diff(date_create($currentDate), date_create('2018-12-7') ); 
+//  echo $punish->format('%R%a');
 
 
  ?>
