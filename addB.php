@@ -29,7 +29,7 @@ mysqli_set_charset($connect,'UTF8');
 					<input type="text" name="tieude"  class="fix_input" id="2">
 					<label class="fix_label"> Tác giả </label>
 					<input type="text" name="tacgia"  class="fix_input" id="3">
-					<label class="fix_label"> Nhà phát hành </label>
+					<label class="fix_label"> Nhà xuất bản </label>
 					<input name="publish" class="fix_input" id="4" ></input>
 					<label class="fix_label"> Pages </label>
 					<input type="text" name="page"  class="fix_input" id="5">

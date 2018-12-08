@@ -40,7 +40,7 @@
 			  		<input type="text" name="tieude" value="<?php echo $row['title'] ?>" class="fix_input" id="2">
 			  		<label class="fix_label"> Tác giả </label>
 			  		<input type="text" name="tacgia" value="<?php echo $row['author'] ?>" class="fix_input" id="3">
-			  		<label class="fix_label"> Nhà phát hành </label>
+			  		<label class="fix_label"> Nhà xuất bản </label>
 			  		<input name="publish" class="fix_input" value="<?php echo $row['publish'] ?>"  id="4"></input>
 			  		<label class="fix_label"> Pages </label>
 			  		<input type="text" name="page" value="<?php echo $row['pages'] ?>" class="fix_input" id="5">
