@@ -61,8 +61,8 @@ mysqli_set_charset($connect,'UTF8');
 
 
 					</select>
-					<label class="fix_label" id="9"> Số lượng </label>
-					<input type="text" name="sl"  class="fix_input">
+					<label class="fix_label"> Số lượng </label>
+					<input type="text" name="sl"  class="fix_input" id="9">
 					<input type="button" name="edit_submit" id="edit_submit" value="Xác nhận" onclick="cl1();">
 					
 				</form> 

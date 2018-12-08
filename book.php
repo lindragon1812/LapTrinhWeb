@@ -41,7 +41,7 @@ function filterTable($query)
 			<form action="book.php" method="POST"> 
 				<div id="thongtin">
 					<h1>Sách</h1>
-					<button > <a href="./addB.php">+ Thêm sách</a> </button>
+					<button onclick="location.href = './addB.php'" type="button"> <a href="./addB.php">+ Thêm sách</a> </button>
 					<p id="po"> Thông tin sách </p>
 					<p id="pi"> Tìm kiếm </p>
 					<input type="submit" name="search" value="Tìm">

@@ -27,24 +27,24 @@ $nameDp = mysqli_fetch_assoc($result_depart);
 			<?php include("topside.inc") ?>
 		<div id="mainpage">
 			<div id="fix_info">
-				<form method="POST" class="fix_form">
+				<form method="POST" class="fix_form" id="myForm">
 						<h1> Sửa thông tin sinh viên </h1>
 						<label class="fix_label"> Ảnh </label>
-						<input type="file" name="anh" value="<?php echo $row['avatar'] ?>" class="fix_input">
+						<input id="1" type="file" name="anh" value="<?php echo $row['avatar'] ?>" class="fix_input" >
 						<label class="fix_label"> Mã Sinh Viên </label>
-						<input type="text" name="masv" value="<?php echo $row['idStudent'] ?>" class="fix_input">
+						<input id="2" type="text" name="masv" value="<?php echo $row['idStudent'] ?>" class="fix_input">
 						<label class="fix_label"> Họ và tên </label>
-						<input type="text" name="hoten" value="<?php echo $row['fullname'] ?>" class="fix_input">
+						<input type="text" name="hoten" value="<?php echo $row['fullname'] ?>" class="fix_input" id="3">
 						<label class="fix_label"> Giới tính </label>
-						<select name="gt" class="fix_input" >
+						<select name="gt" class="fix_input" id="4">
 							<option value="1">Nam</option>
 							<option value="0">Nữ
 							</option>
 						</select>
 						<label class="fix_label"> Ngày sinh </label>
-						<input type="text" name="ngaysinh" value="<?php echo $row['birthday'] ?>" class="fix_input">
+						<input type="text" name="ngaysinh" value="<?php echo $row['birthday'] ?>" class="fix_input" id="5">
 						<label class="fix_label"> Ngành </label>
-						<select class="fix_input" name="nganh">
+						<select class="fix_input" name="nganh" id="6">
 							<option value="<?php echo $id_department ?>"><?php echo $nameDp['nameDepartment'] ?></option>
 							<?php 
 							$result_dp = mysqli_query($connect,"SELECT * FROM department");
@@ -54,15 +54,48 @@ $nameDp = mysqli_fetch_assoc($result_depart);
 							<?php endwhile;
 							?>	
 						</select>
-						<input type="submit" name="edit_submit" id="edit_submit">
+						<input type="button" name="edit_submit" id="edit_submit" onclick="cl();" value="Sửa">
 				</form> 
 			</div>
 		</div>
 	</div>
 </body>
 </html>
+<script type="text/javascript">
+	function cl(){
+		var avatar = document.getElementById("1").value;
+		var id = document.getElementById("2").value;
+		var name = document.getElementById("3").value;
+		var gt = document.getElementById("4").value;
+		var nganh = document.getElementById("6").value;
+		var ngay = document.getElementById("5").value;
+		
+		if(avatar == ""){
+			window.alert("HAY CHON AVATAR");
+		}
+		else if(id == ""){
+			window.alert("HAY CHON MA SINH VIEN");
+		}
+		else if(name == ""){
+			window.alert("HAY CHON TEN");
+		}
+		else if(gt == ""){
+			window.alert("HAY CHON GIOI TINH");
+		}
+		else if(nganh == ""){
+			window.alert("HAY CHON NGANH");
+		}
+		else if(ngay == ""){
+			window.alert("HAY CHON NGAY SINH");
+		}
+		else{
+			window.alert("Sửa sinh viên thành công");
+			document.getElementById("myForm").submit();		
+		}
+	}
+</script>
 <?php 
-if (isset($_POST['edit_submit'])) {
+if (isset($_POST['masv'])) {
 	$idstudent = $_POST['masv'];
 	$avatar = $_POST['anh'];
 	$fullname = $_POST['hoten'];
@@ -76,6 +109,6 @@ if (isset($_POST['edit_submit'])) {
 		// $_SESSION['ngaysinh']=$birthday;
 		// $_SESSION['nganh']=$nganh;
 	mysqli_query($connect,"INSERT INTO `student`(`idStudent`, `avatar`, `fullname`, `gender`, `birthday`, `idDepartment`) VALUES ('$idstudent','$avatar','$fullname','$gender','$birthday','$nganh') ON DUPLICATE KEY UPDATE avatar ='$avatar', fullname = '$fullname', gender='$gender',birthday='$birthday', idDepartment = '$nganh'");
-	header("Location:student.php");
+	//header("Location:student.php");
 }
 ?>
