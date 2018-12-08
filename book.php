@@ -101,7 +101,7 @@ function filterTable($query)
 								<td> <?php  echo $row['copies']; ?></td>
 								<td>
 									<a href="./editBook.php?editBook=<?php echo $row['idBook'] ?>" onclick="sua()" > Sửa </a><br>
-									<a href="./book.php?rm=<?php echo $row['idBook'] ?>" onclick ="return confirm('Ban co muon xoa <?php echo $row['idBook'] ?> ? ');"> Xóa </a>
+									<a href="./book.php?rm=<?php echo $row['idBook'] ?>" onclick ="return confirm('Bạn có muốn xóa dữ liệu về đầu sách\n'+ '<?php echo $row['idBook'] ?>  '+'- <?php echo $row['title'] ?> ?');"> Xóa </a>
 
 								</td>
 

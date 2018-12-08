@@ -5,6 +5,10 @@
 	$connect = mysqli_connect("localhost", "root", "", "libdb") or die('khong the ket noi');
 	mysqli_set_charset($connect,'UTF8');
 	$result = mysqli_query($connect,"SELECT idBook,title FROM book");
+	$nameSt = mysqli_query($connect,"SELECT * FROM student WHERE idStudent = '$id'");
+	$rs = mysqli_fetch_assoc($nameSt);
+	$name1 = $rs['fullname'];
+	
  ?>
 
 <!DOCTYPE html>
@@ -50,9 +54,10 @@
 			<?php 
 				$currentDate = date("Y/m/d");
 
-				//$dueDate = date("Y-m-d", strtotime( "$currentDate + 7 day" ));
+				$dueDate = date("Y-m-d", strtotime( "$currentDate + 7 day" ));
+				
 			 ?>
-			var result =  confirm("Mượn Sách : \n"+"Sinh Viên: "+<?php echo $id ?>+"\n"+"Sách : "+select+"\n");
+			var result =  confirm("Mượn Sách : \n"+"Sinh Viên: "+"<?php echo $id ?>"+" - <?php echo $name1 ?>"+"\n"+"Sách : "+select+"\n"+"Ngày mượn : "+"<?php echo $currentDate ?>"+"\n"+"Hạn trả : "+"<?php echo $dueDate ?>");
 			if(result){
 			document.getElementById("myForm").submit();
 			}

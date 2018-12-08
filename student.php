@@ -9,7 +9,8 @@ if (isset($_POST['search'])) {
 	$search_result = filterTable($query);
 }
 else {
-	$query = "SELECT * FROM student";
+	$query = "SELECT `idStudent`, `avatar`, `fullname`, `gender`, `birthday`, s.idDepartment,f.nameFaculty FROM student AS s,department AS d ,faculty AS f WHERE s.idDepartment = d.idDepartment AND d.idFaculty = f.idFaculty
+";
 	$search_result = filterTable($query);
 }
 function filterTable($query)
@@ -53,6 +54,7 @@ function filterTable($query)
 							<th> Tên </th>
 							<th> Giới tính </th>
 							<th> Ngày sinh </th>
+							<th> Ngành </th>
 							<th> Khoa </th>
 							<th> H.động </th>
 						</tr>
@@ -82,8 +84,12 @@ function filterTable($query)
 								?> 
 							</td>
 							<td>
+								<?php echo $row['nameFaculty']; ?>
+
+							</td>
+							<td>
 								<a href="./edit.php?edit=<?php echo $row['idStudent'] ?>" onclick="sua()" > Sửa </a><br>
-								<a href="./student.php?rm=<?php echo $row['idStudent'] ?>" onclick ="return confirm('Ban co muon xoa <?php echo $row['idStudent'] ?> ? ');"> Xóa </a>
+								<a href="./student.php?rm=<?php echo $row['idStudent'] ?>" onclick ="return confirm('Bạn có muốn xóa dữ liệu về sinh viên \n'  +'<?php echo $row['idStudent'] ?>'+'- <?php echo $row['fullname'] ?>');"> Xóa </a>
 							</td>
 						</tr>
 					<?php endwhile; ?>

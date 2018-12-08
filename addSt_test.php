@@ -29,20 +29,21 @@ mysqli_set_charset($connect,'UTF8');
 					<input type="text" name="hoten" value="" class="fix_input" id="3">
 					<label class="fix_label"> Giới tính </label>
 					<select name="gt" class="fix_input" id="4">
+						<option> </option>
 						<option value="1">Nam</option>
 						<option value="0">Nữ
 						</option>
 					</select>
 					<label class="fix_label"> Ngày sinh </label>		
 				<select class="fix_input" name="ngay" id="5">
-					<option selected disabled> Ngày</option>
+					<option selected disabled value=""> Ngày</option>
 					<?php for ($i=1; $i <=31 ; $i++) { 					
 					 ?>
 					 	<option value="<?php echo $i ?>"><?php echo $i ?></option>
 					 <?php } ?>
 				</select>
 				<select class="fix_input" name="thang" id="6">
-					<option selected disabled> Tháng</option>
+					<option selected disabled value=""> Tháng</option>
 					<?php for ($i=1; $i <=12 ; $i++) { 					
 					 ?>
 					 	<option value="<?php echo $i ?>"><?php echo $i ?></option>
@@ -52,6 +53,7 @@ mysqli_set_charset($connect,'UTF8');
 		</input>
 		<label class="fix_label"> Ngành </label>
 		<select class="fix_input" name="nganh" id="8">
+			<option> </option>
 			<?php 
 			$result_dp1 = mysqli_query($connect,"SELECT * FROM department");
 			while ($row11 = mysqli_fetch_assoc($result_dp1)){
