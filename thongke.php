@@ -45,7 +45,7 @@ $result2 = mysqli_query($connect, "SELECT b.idBorrow, b.idBook,bo.title, s.idStu
 							<th> Tên sinh viên </th>
 							<th> Ngày mượn </th>
 							<th> Hạn trả </th>
-							<th> Ngày trả </th>
+							
 							
 							
 							
@@ -74,7 +74,7 @@ $result2 = mysqli_query($connect, "SELECT b.idBorrow, b.idBook,bo.title, s.idStu
 								<td>
 									<?php echo $row['dueDate'] ?>
 								</td>
-								<td> <?php echo $row['returnDate'] ?></td>
+								
 								
 
 							</tr>

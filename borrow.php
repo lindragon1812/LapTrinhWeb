@@ -52,7 +52,7 @@
 		}
 		else{
 			<?php 
-				$currentDate = date("Y/m/d");
+				$currentDate = date("Y-m-d");
 
 				$dueDate = date("Y-m-d", strtotime( "$currentDate + 7 day" ));
 				

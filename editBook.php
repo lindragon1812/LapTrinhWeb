@@ -49,7 +49,7 @@
 			  		<input type="text" name="gia" value="<?php echo $row['cost'] ?>" class="fix_input" id="6">
 			  		<label class="fix_label"> Phân loại sách </label>	
 			  		<select class="fix_input" name="phanloai" id="7"> 
-			  				
+			  				<option> </option>
 			  				
 			  				
 			  			<?php 
@@ -64,6 +64,7 @@
 			  		</select>
 			  		<label class="fix_label"> Ngôn ngữ  </label>
 			  		<select class="fix_input" name="nn" id="8">
+			  				<option> </option>
 			  				<?php 
 			  				$value = $row['idLanguage'];
 			  				$result_dp = mysqli_query($connect,"SELECT * FROM lang WHERE idLang='$value' ");
@@ -71,7 +72,7 @@
 			  					
 			  				
 			  			 ?>
-			  			<option selected  value="<?php echo $row1['idLang'] ?>"> <?php echo $row1['nameLang'] ?></option>
+			  			<option   value="<?php echo $row1['idLang'] ?>"> <?php echo $row1['nameLang'] ?></option>
 			  				<?php endwhile; ?>
 			  				
 			  				
