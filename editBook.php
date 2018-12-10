@@ -9,7 +9,38 @@
 	}
 	$idB = str_replace('%', ' ', $id);
 	$result = mysqli_query($connect,"SELECT * FROM book WHERE idBook = '$idB'");
-	
+	$row = mysqli_fetch_assoc($result);
+	$category = $row['idCategory'];
+	$result_cate = mysqli_query($connect,"SELECT * FROM category WHERE idCategory = '$category'");
+	$row_cate = mysqli_fetch_assoc($result_cate);
+	$idlanguage = $row['idLanguage'];
+	$result_lang = mysqli_query($connect,"SELECT nameLang,idLang FROM lang WHERE idLang ='$idlanguage'");
+	$row_lang = mysqli_fetch_assoc($result_lang);
+ ?>
+ <?php 
+	if (isset($_POST['ma'])) {
+		$idbook = $_POST['ma'];
+		$title = $_POST['tieude'];
+		$author = $_POST['tacgia'];
+		$publish =  $_POST['publish'];
+		$page = $_POST['page'];
+		$cost = $_POST['gia'];
+		$idcategory = $_POST['phanloai'];
+		$idlang = $_POST['nn'];
+		$copies = $_POST['sl'];
+		// $_SESSION['masv'] = $idstudent;
+		// $_SESSION['anh']=$avatar;
+		// $_SESSION['hoten']=$fullname;
+		// $_SESSION['gt']=$gender;
+		// $_SESSION['ngaysinh']=$birthday;
+		// $_SESSION['nganh']=$nganh;
+		mysqli_query($connect,"INSERT INTO `book`(`idBook`, `title`, `author`, `publish`, `pages`, `cost`, `idCategory`, `idLanguage`, `copies`) VALUES ('$idbook','$title','$author','$publish','$page','$cost','$idcategory','$idlang','$copies') ON DUPLICATE KEY UPDATE idBook = '$idbook',title='$title', author='$author', publish='$publish', pages='$page', cost='$cost', idCategory='$idcategory', idLanguage ='$idlang', copies = $copies  ");
+		header("Location: book.php");
+
+	}
+
+
+
  ?>
 
 <!DOCTYPE html>
@@ -30,7 +61,7 @@
 			  	<form method="POST" class="fix_form" id="myForm">
 			  		<?php 
 					
-					$row = mysqli_fetch_assoc($result);
+					
 
 
 				 	?>	
@@ -49,7 +80,7 @@
 			  		<input type="text" name="gia" value="<?php echo $row['cost'] ?>" class="fix_input" id="6">
 			  		<label class="fix_label"> Phân loại sách </label>	
 			  		<select class="fix_input" name="phanloai" id="7"> 
-			  				<option> </option>
+			  				<option value="<?php echo $category ?>"> <?php echo $row_cate['nameCategory'] ?></option>
 			  				
 			  				
 			  			<?php 
@@ -64,7 +95,7 @@
 			  		</select>
 			  		<label class="fix_label"> Ngôn ngữ  </label>
 			  		<select class="fix_input" name="nn" id="8">
-			  				<option> </option>
+			  				<option value="<?php echo $idLanguage ?>"><?php echo $row_lang['nameLang'] ?> </option>
 			  				<?php 
 			  				$value = $row['idLanguage'];
 			  				$result_dp = mysqli_query($connect,"SELECT * FROM lang WHERE idLang='$value' ");
@@ -152,28 +183,3 @@
 	}
 
 </script>
-<?php 
-	if (isset($_POST['ma'])) {
-		$idbook = $_POST['ma'];
-		$title = $_POST['tieude'];
-		$author = $_POST['tacgia'];
-		$publish =  $_POST['publish'];
-		$page = $_POST['page'];
-		$cost = $_POST['gia'];
-		$idcategory = $_POST['phanloai'];
-		$idlang = $_POST['nn'];
-		$copies = $_POST['sl'];
-		// $_SESSION['masv'] = $idstudent;
-		// $_SESSION['anh']=$avatar;
-		// $_SESSION['hoten']=$fullname;
-		// $_SESSION['gt']=$gender;
-		// $_SESSION['ngaysinh']=$birthday;
-		// $_SESSION['nganh']=$nganh;
-		mysqli_query($connect,"INSERT INTO `book`(`idBook`, `title`, `author`, `publish`, `pages`, `cost`, `idCategory`, `idLanguage`, `copies`) VALUES ('$idbook','$title','$author','$publish','$page','$cost','$idcategory','$idlang','$copies') ON DUPLICATE KEY UPDATE idBook = '$idbook',title='$title', author='$author', publish='$publish', pages='$page', cost='$cost', idCategory='$idcategory', idLanguage ='$idlang', copies = $copies  ");
-		header("Location: book.php");
-
-	}
-
-
-
- ?>

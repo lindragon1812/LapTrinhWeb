@@ -4,6 +4,22 @@ $name = $_SESSION['userid'];
 $connect = mysqli_connect("localhost", "root", "", "libdb") or die('khong the ket noi');
 mysqli_set_charset($connect,'UTF8');
 ?>
+<?php 
+if (isset($_POST['masv'])) {
+	$idstudent = $_POST['masv'];
+	$avatar = $_POST['anh'];
+	$fullname = $_POST['hoten'];
+	$gender =  $_POST['gt'];		//$birthdayst = $_POST['ngaysinh'];
+	$nganh = $_POST['nganh'];
+	$ngay = $_POST['ngay']; 
+	$thang = $_POST['thang'];
+	$nam = $_POST['nam'];
+	$birthdayst = $nam."-".$thang."-".$ngay;
+	$birthday = date("Y/m/d",strtotime($birthdayst));
+	mysqli_query($connect,"INSERT INTO `student`(`idStudent`, `avatar`, `fullname`, `gender`, `birthday`, `idDepartment`) VALUES ('$idstudent','$avatar','$fullname','$gender','$birthday','$nganh') ON DUPLICATE KEY UPDATE avatar ='$avatar', fullname = '$fullname', gender='$gender',birthday='$birthday', idDepartment = '$nganh'");
+	header("Location: student.php");
+}
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -113,19 +129,3 @@ mysqli_set_charset($connect,'UTF8');
 			window.alert("HAY CHON GIOI TINH");
 	}
 </script> -->
-<?php 
-if (isset($_POST['masv'])) {
-	$idstudent = $_POST['masv'];
-	$avatar = $_POST['anh'];
-	$fullname = $_POST['hoten'];
-	$gender =  $_POST['gt'];		//$birthdayst = $_POST['ngaysinh'];
-	$nganh = $_POST['nganh'];
-	$ngay = $_POST['ngay']; 
-	$thang = $_POST['thang'];
-	$nam = $_POST['nam'];
-	$birthdayst = $nam."-".$thang."-".$ngay;
-	$birthday = date("Y/m/d",strtotime($birthdayst));
-	mysqli_query($connect,"INSERT INTO `student`(`idStudent`, `avatar`, `fullname`, `gender`, `birthday`, `idDepartment`) VALUES ('$idstudent','$avatar','$fullname','$gender','$birthday','$nganh') ON DUPLICATE KEY UPDATE avatar ='$avatar', fullname = '$fullname', gender='$gender',birthday='$birthday', idDepartment = '$nganh'");
-	//header("Location: student.php");
-}
-?>

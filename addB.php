@@ -4,6 +4,23 @@ $name = $_SESSION['userid'];
 $connect = mysqli_connect("localhost", "root", "", "libdb") or die('khong the ket noi');
 mysqli_set_charset($connect,'UTF8');
 ?>
+<?php 
+if (isset($_POST['ma'])) {
+	$idbook = $_POST['ma'];
+	$title = $_POST['tieude'];
+	$author = $_POST['tacgia'];
+	$publish =  $_POST['publish'];
+	$page = $_POST['page'];
+	$cost = $_POST['gia'];
+	$idcategory = $_POST['phanloai'];
+	$idlang = $_POST['nn'];
+	$copies = $_POST['sl'];
+	
+	mysqli_query($connect,"INSERT INTO `book`(`idBook`, `title`, `author`, `publish`, `pages`, `cost`, `idCategory`, `idLanguage`, `copies`) VALUES ('$idbook','$title','$author','$publish','$page','$cost','$idcategory','$idlang','$copies') ON DUPLICATE KEY UPDATE idBook = '$idbook',title='$title', author='$author', publish='$publish', pages='$page', cost='$cost', idCategory='$idcategory', idLanguage ='$idlang', copies ='$copies'  ");
+	//header("Location:book.php");
+
+}
+?>
 
 <!DOCTYPE html>
 <html>
@@ -126,20 +143,3 @@ mysqli_set_charset($connect,'UTF8');
 
 
 </script>
-<?php 
-if (isset($_POST['ma'])) {
-	$idbook = $_POST['ma'];
-	$title = $_POST['tieude'];
-	$author = $_POST['tacgia'];
-	$publish =  $_POST['publish'];
-	$page = $_POST['page'];
-	$cost = $_POST['gia'];
-	$idcategory = $_POST['phanloai'];
-	$idlang = $_POST['nn'];
-	$copies = $_POST['sl'];
-	
-	mysqli_query($connect,"INSERT INTO `book`(`idBook`, `title`, `author`, `publish`, `pages`, `cost`, `idCategory`, `idLanguage`, `copies`) VALUES ('$idbook','$title','$author','$publish','$page','$cost','$idcategory','$idlang','$copies') ON DUPLICATE KEY UPDATE idBook = '$idbook',title='$title', author='$author', publish='$publish', pages='$page', cost='$cost', idCategory='$idcategory', idLanguage ='$idlang', copies ='$copies'  ");
-	//header("Location:book.php");
-
-}
-?>

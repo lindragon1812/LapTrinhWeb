@@ -17,6 +17,29 @@ $id_department = $row['idDepartment'];
 $result_depart = mysqli_query($connect,"SELECT nameDepartment FROM department WHERE idDepartment = '$id_department'");
 $nameDp = mysqli_fetch_assoc($result_depart);
 ?>
+<?php 
+if (isset($_POST['masv'])) {
+	$idstudent = $_POST['masv'];
+	$avatar = $_POST['anh'];
+	$fullname = $_POST['hoten'];
+	$gender =  $_POST['gt'];
+	
+	$nganh = $_POST['nganh'];
+	$ngay = $_POST['ngay']; 
+	$thang = $_POST['thang'];
+	$nam = $_POST['nam'];
+		// $_SESSION['masv'] = $idstudent;
+		// $_SESSION['anh']=$avatar;
+		// $_SESSION['hoten']=$fullname;
+		// $_SESSION['gt']=$gender;
+		// $_SESSION['ngaysinh']=$birthday;
+		// $_SESSION['nganh']=$nganh;
+	$birthdayst = $nam."-".$thang."-".$ngay;
+	$birthday = date("Y/m/d",strtotime($birthdayst));
+	mysqli_query($connect,"INSERT INTO `student`(`idStudent`, `avatar`, `fullname`, `gender`, `birthday`, `idDepartment`) VALUES ('$idstudent','$avatar','$fullname','$gender','$birthday','$nganh') ON DUPLICATE KEY UPDATE avatar ='$avatar', fullname = '$fullname', gender='$gender',birthday='$birthday', idDepartment = '$nganh'");
+	header("Location:student.php");
+}
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -117,26 +140,3 @@ $nameDp = mysqli_fetch_assoc($result_depart);
 		}
 	}
 </script>
-<?php 
-if (isset($_POST['masv'])) {
-	$idstudent = $_POST['masv'];
-	$avatar = $_POST['anh'];
-	$fullname = $_POST['hoten'];
-	$gender =  $_POST['gt'];
-	
-	$nganh = $_POST['nganh'];
-	$ngay = $_POST['ngay']; 
-	$thang = $_POST['thang'];
-	$nam = $_POST['nam'];
-		// $_SESSION['masv'] = $idstudent;
-		// $_SESSION['anh']=$avatar;
-		// $_SESSION['hoten']=$fullname;
-		// $_SESSION['gt']=$gender;
-		// $_SESSION['ngaysinh']=$birthday;
-		// $_SESSION['nganh']=$nganh;
-	$birthdayst = $nam."-".$thang."-".$ngay;
-	$birthday = date("Y/m/d",strtotime($birthdayst));
-	mysqli_query($connect,"INSERT INTO `student`(`idStudent`, `avatar`, `fullname`, `gender`, `birthday`, `idDepartment`) VALUES ('$idstudent','$avatar','$fullname','$gender','$birthday','$nganh') ON DUPLICATE KEY UPDATE avatar ='$avatar', fullname = '$fullname', gender='$gender',birthday='$birthday', idDepartment = '$nganh'");
-	//header("Location:student.php");
-}
-?>
