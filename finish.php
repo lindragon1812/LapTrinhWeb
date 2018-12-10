@@ -60,6 +60,7 @@ $name_book = mysqli_fetch_assoc($result);
 <?php 
 if(isset($_POST['submit'])){
 	mysqli_query($connect, "UPDATE borrowing SET returnDate = '$returnDate', punish = '$lateInt' where idBorrow='$id'");
+	mysqli_query($connect,"UPDATE book SET copies = copies +1 WHERE idBook = '$id_book'");
 	//echo "<script>window.close();</script>";
 }
 ?>
