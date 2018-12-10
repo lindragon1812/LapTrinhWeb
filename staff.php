@@ -18,12 +18,12 @@
 				// $_SESSION['pw'] = $oldpw;
 				// $_SESSION['pw1'] = $newpw;
 				// header("Location:connect.php");
-				$al = "Doi mat khau thanh cong ";
+				$al = "Đổi mật khẩu thành công ";
 				$sql = "UPDATE `staff` SET `password` = '$newpw' WHERE `idStaff` = '$id'";
 				mysqli_query($connect,$sql);
 
 			}else{
-				$al = "Mat khau khong hop le ";
+				$al = "Mật khẩu không hợp lệ ";
 			}
 			
 			
