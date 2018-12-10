@@ -4,7 +4,7 @@
 	$id = $_SESSION['test'];
 	$connect = mysqli_connect("localhost", "root", "", "libdb") or die('khong the ket noi');
 	mysqli_set_charset($connect,'UTF8');
-	$result = mysqli_query($connect,"SELECT idBook,title FROM book");
+	$result = mysqli_query($connect,"SELECT idBook,title FROM book WHERE copies > 0");
 	$nameSt = mysqli_query($connect,"SELECT * FROM student WHERE idStudent = '$id'");
 	$rs = mysqli_fetch_assoc($nameSt);
 	$name1 = $rs['fullname'];
@@ -73,6 +73,7 @@
 		$dueDate = date("Y-m-d", strtotime( "$currentDate + 7 day" ));
 
 		mysqli_query($connect,"INSERT INTO `borrowing` (`idBorrow`, `idStudent`, `idBook`, `borrowDate`, `dueDate`, `returnDate`, `punish`) VALUES (NULL, '$id', '$idbook', '$currentDate', '$dueDate' , NULL, 0);");
+		mysqli_query($connect,"UPDATE book SET copies = copies -1 WHERE idBook = '$idbook'");
 		header("Location:borrow_sv.php");
 			
 	}
