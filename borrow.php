@@ -1,5 +1,5 @@
 <?php 
-	session_start();
+	include("verify.php");
 	$name = $_SESSION['userid'];
 	$id = $_SESSION['test'];
 	$connect = mysqli_connect("localhost", "root", "", "libdb") or die('khong the ket noi');

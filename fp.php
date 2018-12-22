@@ -1,6 +1,6 @@
 <?php 
 	$val = "";
-	session_start();
+	include("verify.php");
 	$connect = mysqli_connect("localhost","root","","libdb") or die('khong the ket noi');
 	if (isset($_POST['submit'])) {
 		$name = $_POST['username'];

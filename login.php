@@ -30,7 +30,7 @@
 				$_SESSION['id']=$sv_id;
 				
 
-				header("Location:index.php");
+				header("Location:home.php");
 			}elseif($sv_name ==$name && $sv_pw != $pw){
 				$val = "Sai tên ID và mật khẩu ";
 			}

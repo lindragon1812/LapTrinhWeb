@@ -1,4 +1,5 @@
 <?php 
+include("verify.php");
 $connect = mysqli_connect("localhost", "root", "", "libdb") or die('khong the ket noi');
 mysqli_set_charset($connect,'UTF8');
 $id = $_POST['id'];

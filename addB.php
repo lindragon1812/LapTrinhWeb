@@ -1,5 +1,6 @@
 <?php 
-session_start();
+// session_start();
+include("verify.php");
 $name = $_SESSION['userid'];
 $connect = mysqli_connect("localhost", "root", "", "libdb") or die('khong the ket noi');
 mysqli_set_charset($connect,'UTF8');

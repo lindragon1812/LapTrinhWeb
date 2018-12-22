@@ -1,5 +1,5 @@
 <?php 
-session_start();
+include("verify.php");
 $name = $_SESSION['userid'];
 $connect = mysqli_connect("localhost", "root", "", "libdb") or die('khong the ket noi');
 mysqli_set_charset($connect,'UTF8');
@@ -58,7 +58,7 @@ if (isset($_POST['masv'])) {
 				<form method="POST" class="fix_form" id="myForm">
 						<h1> Sửa thông tin sinh viên </h1>
 						<label class="fix_label"> Ảnh </label>
-						<input id="1" type="file" name="anh" value="<?php echo $row['avatar'] ?>" class="fix_input" >
+						<input accept="image/png,image/jpg,image/gif"  id="1" type="file" name="anh" value="<?php echo $row['avatar'] ?>" class="fix_input" >
 						<label class="fix_label"> Mã Sinh Viên </label>
 						<input id="2" type="text" name="masv" value="<?php echo $row['idStudent'] ?>" class="fix_input">
 						<label class="fix_label"> Họ và tên </label>

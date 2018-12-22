@@ -1,5 +1,7 @@
 <?php 
-	session_start();
+	include("verify.php");
+
+	// session_start();
 	$name = $_SESSION['userid'];
 	$connect = mysqli_connect("localhost","root","","libdb") or die('khong the ket noi');
 	$result = mysqli_query($connect,"SELECT COUNT(*) FROM book");

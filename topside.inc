@@ -8,7 +8,7 @@
 					<a href="#"> Xin chào, <?php echo $name ?> </a>
 						<ul style="list-style: none">
 							<li>
-								<a href="./login.php" style="display: block"> Logout </a>
+								<a href="./logout.php" style="display: block"> Logout </a>
 							</li>
 						</ul>
 					</li>
@@ -19,7 +19,7 @@
 <div id="sidepage">
 			<div id="sp_1">
 				<p> Xin chao, <a href="./staff.php"><?php echo $name ?></a></p>
-				<img src="smile.jpg">
+				<img src="icon.png">
 			</div>
 			<div id="sp_2">
 				<p> QUẢN LÝ THƯ VIỆN <p>
