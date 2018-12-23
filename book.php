@@ -6,7 +6,7 @@ $connect = mysqli_connect("localhost", "root", "", "libdb") or die('khong the ke
 mysqli_set_charset($connect,'UTF8');
 if (isset($_POST['search'])) {
 	$value = $_POST['value'];
-	$query = "SELECT * FROM book WHERE CONCAT(`idBook`, `title`, `author`, `publish`, `pages`, `cost`, `idCategory`, `idLanguage`, `copies`) LIKE '%$value%'";
+	$query = "SELECT * FROM book WHERE CONCAT(`title`, `author`) LIKE '%$value%'";
 	$search_result = filterTable($query);
 }
 else {

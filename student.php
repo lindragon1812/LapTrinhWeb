@@ -5,7 +5,7 @@ $connect = mysqli_connect("localhost", "root", "", "libdb") or die('khong the ke
 mysqli_set_charset($connect,'UTF8');
 if (isset($_POST['search'])) {
 	$value = $_POST['value'];
-	$query = "SELECT idStudent, avatar, fullname, gender, birthday, d.nameDepartment ,d.idDepartment,f.nameFaculty FROM student s, department d, faculty f   WHERE s.idDepartment = d.idDepartment AND d.idFaculty = f.idFaculty AND CONCAT(idStudent,avatar,fullname,gender,birthday, d.nameDepartment,f.nameFaculty) LIKE '%$value%'";
+	$query = "SELECT idStudent, avatar, fullname, gender, birthday, d.nameDepartment ,d.idDepartment,f.nameFaculty FROM student s, department d, faculty f   WHERE s.idDepartment = d.idDepartment AND d.idFaculty = f.idFaculty AND CONCAT(idStudent,fullname) LIKE '%$value%'";
 	$search_result = filterTable($query);
 }
 else {
