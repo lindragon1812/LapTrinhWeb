@@ -50,6 +50,7 @@ $name_book = mysqli_fetch_assoc($result);
 		?>
 		<p> Phạt <?php echo $lateInt ?></p>
 		<input type="submit" name="submit1" value="Xác nhận">
+		<input onclick="self.close()" type="button" id="cancelBtn" value="Hủy">   </input>
 		
 	</form>
 </body>
@@ -61,7 +62,9 @@ $name_book = mysqli_fetch_assoc($result);
 <?php 
 if(isset($_POST['submit'])){
 	mysqli_query($connect, "UPDATE borrowing SET returnDate = '$returnDate', punish = '$lateInt' where idBorrow='$id'");
-	mysqli_query($connect,"UPDATE book SET copies = copies +1 WHERE idBook = '$id_book'");
+	if($lost_pun == "1"){
+		mysqli_query($connect,"UPDATE book SET copies = copies +1 WHERE idBook = '$id_book'");
+		}
 	//echo "<script>window.close();</script>";
 }
 ?>
