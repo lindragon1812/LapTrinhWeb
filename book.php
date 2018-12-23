@@ -60,7 +60,7 @@ function filterTable($query)
 							<th> NXB </th>
 							<th> Số trang </th>
 							<th> Giá </th>
-							<th> Lĩnh vực </th>
+							<th> Thể loại </th>
 							<th> Ngôn ngữ </th>
 							<th> Số lượng </th>
 							<th> H.động </th>
