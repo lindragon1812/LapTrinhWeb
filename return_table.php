@@ -5,6 +5,8 @@
 	$connect = mysqli_connect("localhost", "root", "", "libdb") or die('khong the ket noi');
 	mysqli_set_charset($connect,'UTF8');
 	$result = mysqli_query($connect,"SELECT * FROM borrowing WHERE idStudent = '$id' AND returnDate IS NULL");
+	$result1 = mysqli_query($connect,"SELECT fullname FROM student WHERE idStudent='$id'");
+	$sv= mysqli_fetch_assoc($result1);
  ?>
 
 <!DOCTYPE html>
@@ -22,6 +24,7 @@
 		<?php include("topside.inc") ?>
 		<div id="mainpage">
 			<h1> Trả Sách </h1>
+			<p>Sinh viên: <?php echo $id ?> - <?php echo $sv['fullname'] ?> </p>
 			<table id="basictable" class="table">
 			<thead>
 			<tr>

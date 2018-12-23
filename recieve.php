@@ -47,6 +47,7 @@ $row = mysqli_fetch_assoc($result);
 		<input id="dmg" type="radio" name="lost" value="1"> Hư hại <br>
 		<input id="lost" type="radio" name="lost" value="2"> Mất sách <br>
 		<input type="submit" name="submit" value="Xác nhận">
+		<input onclick="self.close()" type="button" id="cancelBtn" value="Hủy">   </input>
 	</form>
 </body>
 </html>
