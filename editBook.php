@@ -95,16 +95,8 @@
 			  		</select>
 			  		<label class="fix_label"> Ngôn ngữ  </label>
 			  		<select class="fix_input" name="nn" id="8">
-			  				<option value="<?php echo $idLanguage ?>"><?php echo $row_lang['nameLang'] ?> </option>
-			  				<?php 
-			  				$value = $row['idLanguage'];
-			  				$result_dp = mysqli_query($connect,"SELECT * FROM lang WHERE idLang='$value' ");
-			  				while ($row1 = mysqli_fetch_assoc($result_dp)):
-			  					
+			  				<option value="<?php echo $idlanguage ?>"><?php echo $row_lang['nameLang'] ?> </option>
 			  				
-			  			 ?>
-			  			<option   value="<?php echo $row1['idLang'] ?>"> <?php echo $row1['nameLang'] ?></option>
-			  				<?php endwhile; ?>
 			  				
 			  				
 			  			<?php 
