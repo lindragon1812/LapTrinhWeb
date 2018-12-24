@@ -45,3 +45,6 @@ h2{
 #Tab1{
     display: block;
 }
+table{
+    overflow: auto;
+}
