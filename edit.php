@@ -60,7 +60,7 @@ if (isset($_POST['masv'])) {
 						<label class="fix_label"> Ảnh </label>
 						<input accept="image/png,image/jpg,image/gif"  id="1" type="file" name="anh" value="<?php echo $row['avatar'] ?>" class="fix_input" >
 						<label class="fix_label"> Mã Sinh Viên </label>
-						<input disabled id="2" type="text" name="masv" value="<?php echo $row['idStudent'] ?>" class="fix_input">
+						<input readonly id="2" type="text" name="masv" value="<?php echo $row['idStudent'] ?>" class="fix_input">
 						<label class="fix_label"> Họ và tên </label>
 						<input type="text" name="hoten" value="<?php echo $row['fullname'] ?>" class="fix_input" id="3">
 						<label class="fix_label"> Giới tính </label>

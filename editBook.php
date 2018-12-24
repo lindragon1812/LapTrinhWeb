@@ -66,7 +66,7 @@
 
 				 	?>	
 			  		<label class="fix_label"> Mã Sách </label>
-			  		<input disabled type="text" name="ma" value="<?php echo $row['idBook'] ?>" class="fix_input" id="1">
+			  		<input readonly type="text" name="ma" value="<?php echo $row['idBook'] ?>" class="fix_input" id="1">
 			  		<label class="fix_label"> Tiêu đề </label>
 			  		<input type="text" name="tieude" value="<?php echo $row['title'] ?>" class="fix_input" id="2">
 			  		<label class="fix_label"> Tác giả </label>
