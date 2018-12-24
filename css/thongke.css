@@ -33,7 +33,7 @@ body {font-family: Arial;}
 .tabcontent {
     display: none;
     padding: 6px 12px;
-   
+   height: 60%;
     border-top: none;
 }
 h2{
@@ -44,7 +44,5 @@ h2{
 }
 #Tab1{
     display: block;
-}
-table{
     overflow: auto;
 }
